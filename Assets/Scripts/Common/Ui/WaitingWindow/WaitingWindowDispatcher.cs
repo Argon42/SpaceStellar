@@ -20,8 +20,6 @@ namespace SpaceStellar.Common.Ui.WaitingWindow
             _presenter = presenter;
             _waitingWindowBuilderFactory = waitingWindowBuilderFactory;
             _logger = logger;
-
-            _presenter.SetModel(model);
         }
 
         public IWaitingWindowBuilder CreateWaiting(object sender) => _waitingWindowBuilderFactory.Create(this, sender);

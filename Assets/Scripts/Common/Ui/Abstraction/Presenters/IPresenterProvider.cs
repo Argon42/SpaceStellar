@@ -1,4 +1,4 @@
-﻿namespace SpaceStellar.Common.Ui.Abstraction
+﻿namespace SpaceStellar.Common.Ui.Abstraction.Presenters
 {
     public interface IPresenterProvider
     {

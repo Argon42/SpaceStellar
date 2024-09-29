@@ -1,7 +1,7 @@
 ﻿using System;
-using SpaceStellar.Common.Ui.Abstraction;
+using SpaceStellar.Common.Ui.Abstraction.Presenters;
 
-namespace SpaceStellar.Common.Ui
+namespace SpaceStellar.Common.Ui.Presenters
 {
     public abstract class PresentationLayerItem : IPresentationLayerItem
     {

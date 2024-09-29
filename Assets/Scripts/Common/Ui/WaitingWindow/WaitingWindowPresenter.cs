@@ -1,3 +1,5 @@
+using SpaceStellar.Common.Ui.Presenters;
+
 namespace SpaceStellar.Common.Ui.WaitingWindow
 {
     public class WaitingWindowPresenter : Presenter<IWaitingWindowModel>, IWaitingWindowPresenter
