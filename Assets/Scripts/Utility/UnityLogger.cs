@@ -13,5 +13,10 @@ namespace SpaceStellar.Utility
         {
             UnityEngine.Debug.LogException(exception);
         }
+
+        public void Error(string message, params object[] args)
+        {
+            UnityEngine.Debug.LogErrorFormat(message, args);
+        }
     }
 }

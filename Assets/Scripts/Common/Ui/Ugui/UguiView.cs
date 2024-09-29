@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SpaceStellar.Common.Ui.Abstraction;
+using UnityEngine;
 
 namespace SpaceStellar.Common.Ui.Ugui
 {

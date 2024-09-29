@@ -1,4 +1,4 @@
-﻿using SpaceStellar.Common.Ui;
+﻿using SpaceStellar.Common.Ui.Abstraction;
 
 namespace SpaceStellar.Bootstrap.Ui
 {

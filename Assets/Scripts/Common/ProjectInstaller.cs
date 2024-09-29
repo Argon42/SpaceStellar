@@ -1,5 +1,4 @@
-﻿using SpaceStellar.Bootstrap;
-using SpaceStellar.Common.Data;
+﻿using SpaceStellar.Common.Data;
 using SpaceStellar.Utility;
 using Zenject;
 

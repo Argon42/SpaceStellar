@@ -1,9 +1,9 @@
-﻿namespace SpaceStellar.Common.Ui
+namespace SpaceStellar.Common.Ui.Abstraction
 {
     public interface IView
     {
+        bool IsActive { get; }
         void Activate();
         void Deactivate();
-        bool IsActive { get; }
     }
 }

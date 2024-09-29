@@ -6,5 +6,10 @@ namespace SpaceStellar.Utility
     {
         void Debug(string message);
         void Exception(Exception exception);
+        void Error(string message, params object[] args);
+    }
+
+    public interface ILogger<T> : ILogger
+    {
     }
 }

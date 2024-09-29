@@ -1,5 +1,5 @@
 ﻿using SpaceStellar.Bootstrap.Ui;
-using SpaceStellar.Common.Ui;
+using SpaceStellar.Common.Ui.Abstraction;
 
 namespace SpaceStellar.Bootstrap
 {
@@ -7,9 +7,9 @@ namespace SpaceStellar.Bootstrap
     {
         private readonly IScreenLoading _loadingScreen;
 
-        public LoadingScreenService(IScreenContainer screenContainer)
+        public LoadingScreenService(IViewProvider screenContainer)
         {
-            _loadingScreen = screenContainer.GetScreen<IScreenLoading>();
+            _loadingScreen = screenContainer.LoadView<IScreenLoading>(default).GetAwaiter().GetResult();
         }
 
         public void UpdateProgress(float progress)

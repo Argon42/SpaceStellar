@@ -1,4 +1,4 @@
-﻿namespace SpaceStellar.Bootstrap
+﻿namespace SpaceStellar.Common.Data
 {
     public class ClientConfiguration
     {

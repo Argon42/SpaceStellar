@@ -12,7 +12,6 @@ namespace SpaceStellar.Common.Ui.Ugui
 
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<ScreenManager>().AsSingle();
             Container.BindInterfacesAndSelfTo<UguiScreenContainer>().AsSingle();
             Container.Bind<UguiScreenPrefabStorage>().FromInstance(uguiScreenPrefabStorage).AsSingle();
             Container.CreateInstallerFromPrefab(uiRootInstaller);
