@@ -1,3 +1,5 @@
+using SpaceStellar.Common.Ui;
+using SpaceStellar.Game.Ui.MainScreen;
 using Zenject;
 
 namespace SpaceStellar.Game
@@ -8,6 +10,15 @@ namespace SpaceStellar.Game
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<GameFlow>().AsSingle();
+
+            
+            InstallUi();
+        }
+
+        private void InstallUi()
+        {
+            UiInstaller.Install(Container);
+            MainScreenInstaller.Install(Container);
         }
     }
 }

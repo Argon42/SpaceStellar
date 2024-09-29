@@ -22,7 +22,7 @@ namespace SpaceStellar.Common.Ui
             OnSetModel();
         }
 
-        public void ResetModel()
+        public sealed override void ResetModel()
         {
             if (Model == null)
                 throw new InvalidOperationException($"Presenter {GetType().Name} has no model set");

@@ -10,6 +10,10 @@ namespace SpaceStellar.Common
         {
             Container.BindInterfacesAndSelfTo<SceneSwitcher>().AsSingle();
             Container.Bind<ILogger>().To<UnityLogger>().AsSingle();
+            Container.Bind(typeof(ILogger<>))
+                .To(typeof(UnityLogger<>))
+                .AsTransient();
+
             Container.Bind<ICachedDataProvider>().To<PlayerPrefsCachedDataProvider>().AsSingle();
             Container.Bind<ClientConfiguration>().AsSingle();
             BindDataSources();
