@@ -1,0 +1,19 @@
+{
+    "name": "SpaceStellar",
+    "rootNamespace": "SpaceStellar",
+    "references": [
+        "R3.Unity",
+        "Zenject",
+        "UniTask",
+        "Unity.Addressables"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
