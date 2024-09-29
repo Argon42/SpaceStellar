@@ -1,10 +1,11 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using SpaceStellar.Common.Ui.Abstraction;
 
 namespace SpaceStellar.Common.Ui
 {
-    public abstract class ScreenPresenter<TModel, TView> : Presenter<TModel>,
+    public abstract class ScreenPresenter<TModel, TView> : PresentationLayerItem,
         IScreenPresenter<TModel>,
         IPreparable
         where TView : class, IScreenView
@@ -31,5 +32,32 @@ namespace SpaceStellar.Common.Ui
 
         private UniTask<TView> GetScreenView(CancellationToken token) =>
             _viewProvider.TryGetOrLoadView<TView>(token);
+
+        public TModel Model { get; private set; }
+
+        public void SetModel(TModel model)
+        {
+            if (Model != null)
+                throw new InvalidOperationException($"Presenter {GetType().Name} has model already set");
+
+            Model = model;
+            OnSetModel();
+        }
+
+
+        public void ResetModel()
+        {
+            if (Model == null)
+                throw new InvalidOperationException($"Presenter {GetType().Name} has no model set");
+
+            if (IsOpened)
+                throw new InvalidOperationException($"Presenter {GetType().Name} is opened");
+
+            OnResetModel();
+            Model = default!;
+        }
+
+        protected virtual void OnSetModel() { }
+        protected virtual void OnResetModel() { }
     }
 }

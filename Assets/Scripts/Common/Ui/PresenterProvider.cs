@@ -12,7 +12,7 @@ namespace SpaceStellar.Common.Ui
             _container = container;
         }
 
-        public TPresenter GetPresenter<TPresenter, TModel>() where TPresenter : IPresenter<TModel>
+        public TPresenter GetPresenter<TPresenter, TModel>() where TPresenter : IPresentationLayerItem
         {
             var presenter = _container.Resolve<TPresenter>();
             return presenter;

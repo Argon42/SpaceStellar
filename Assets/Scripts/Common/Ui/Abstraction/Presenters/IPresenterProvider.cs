@@ -3,6 +3,6 @@
     public interface IPresenterProvider
     {
         TPresenter GetPresenter<TPresenter, TModel>()
-            where TPresenter : IPresenter<TModel>;
+            where TPresenter : IPresentationLayerItem;
     }
 }
