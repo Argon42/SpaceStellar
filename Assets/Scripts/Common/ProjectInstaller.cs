@@ -1,4 +1,6 @@
-﻿using SpaceStellar.Utility;
+﻿using SpaceStellar.Bootstrap;
+using SpaceStellar.Common.Data;
+using SpaceStellar.Utility;
 using Zenject;
 
 namespace SpaceStellar.Common
@@ -9,6 +11,14 @@ namespace SpaceStellar.Common
         {
             Container.BindInterfacesAndSelfTo<SceneSwitcher>().AsSingle();
             Container.Bind<ILogger>().To<UnityLogger>().AsSingle();
+            Container.Bind<ICachedDataProvider>().To<PlayerPrefsCachedDataProvider>().AsSingle();
+            Container.Bind<ClientConfiguration>().AsSingle();
+            BindDataSources();
+        }
+
+        private void BindDataSources()
+        {
+            Container.BindInterfacesAndSelfTo<ClientProfileDataSource>().AsSingle();
         }
     }
 }

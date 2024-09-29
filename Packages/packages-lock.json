@@ -23,6 +23,13 @@
       "dependencies": {},
       "hash": "c7a7bbf74e102495c2afeb03e4b25ffb802611b7"
     },
+    "com.marijnzwemmer.unity-toolbar-extender": {
+      "version": "1.4.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.svermeulen.extenject": {
       "version": "9.2.0-stcf3",
       "depth": 0,

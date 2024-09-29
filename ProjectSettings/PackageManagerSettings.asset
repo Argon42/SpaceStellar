@@ -35,6 +35,7 @@ MonoBehaviour:
     - com.svermeulen.extenject
     - net.tnrd.serializableinterface
     - com.cysharp.r3
+    - com.marijnzwemmer.unity-toolbar-extender
     m_IsDefault: 0
     m_Capabilities: 0
     m_ConfigSource: 4

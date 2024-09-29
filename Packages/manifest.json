@@ -7,11 +7,13 @@
         "com.cysharp.unitask",
         "com.svermeulen.extenject",
         "net.tnrd.serializableinterface",
-        "com.cysharp.r3"
+        "com.cysharp.r3",
+        "com.marijnzwemmer.unity-toolbar-extender"
       ]
     }
   ],
   "dependencies": {
+    "com.marijnzwemmer.unity-toolbar-extender": "1.4.2",
     "com.cysharp.r3": "1.2.9",
     "com.cysharp.unitask": "2.5.4",
     "com.github-glitchenzo.nugetforunity": "https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity#v4.1.1",
