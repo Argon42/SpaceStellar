@@ -1,0 +1,49 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/EMPTY_BLOCK_STYLE/@EntryValue">TOGETHER_SAME_LINE</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AF34E0A4EF150241B1DFE08968C65F7D/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AF34E0A4EF150241B1DFE08968C65F7D/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AF34E0A4EF150241B1DFE08968C65F7D/Description/@EntryValue">Генерирует mvp классы с интерфейсами</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AF34E0A4EF150241B1DFE08968C65F7D/Field/=NAME/@KeyIndexDefined">True</s:Boolean>
+	<s:Int64 x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AF34E0A4EF150241B1DFE08968C65F7D/Field/=NAME/Order/@EntryValue">0</s:Int64>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AF34E0A4EF150241B1DFE08968C65F7D/Reformat/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AF34E0A4EF150241B1DFE08968C65F7D/Shortcut/@EntryValue">mvp</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AF34E0A4EF150241B1DFE08968C65F7D/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AF34E0A4EF150241B1DFE08968C65F7D/Text/@EntryValue">public class $NAME$ScreenModel : I$NAME$ScreenModel { }
+
+public interface I$NAME$ScreenModel { }
+
+public class $NAME$ScreenPresenter : ScreenPresenter&lt;I$NAME$ScreenModel, I$NAME$ScreenView&gt;, I$NAME$ScreenPresenter
+{
+    public $NAME$ScreenPresenter(IViewProvider viewProvider) : base(viewProvider) { }
+
+    protected override void OnOpen() { }
+
+    protected override void OnClose() { }
+}
+
+public interface I$NAME$ScreenPresenter : IScreenPresenter&lt;I$NAME$ScreenModel&gt; { }
+
+public interface I$NAME$ScreenView : IScreenView { }
+
+public class Ugui$NAME$ScreenView : UguiScreenView, I$NAME$ScreenView { }
+
+public class Open$NAME$ScreenCommand : OpenScreenCommand&lt;I$NAME$ScreenPresenter, I$NAME$ScreenModel&gt;
+{
+    public Open$NAME$ScreenCommand(I$NAME$ScreenModel model) : base(model)
+    {
+    }
+}
+
+public class $NAME$ScreenInstaller : Installer&lt;$NAME$ScreenInstaller&gt;
+{
+    public override void InstallBindings()
+    {
+        Container.BindInterfacesTo&lt;$NAME$ScreenModel&gt;().AsSingle();
+        Container.BindInterfacesTo&lt;$NAME$ScreenPresenter&gt;().AsSingle();
+
+        Container.Bind&lt;Open$NAME$ScreenCommand&gt;().AsSingle();
+    }
+}</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AF34E0A4EF150241B1DFE08968C65F7D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AF34E0A4EF150241B1DFE08968C65F7D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AF34E0A4EF150241B1DFE08968C65F7D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String></wpf:ResourceDictionary>

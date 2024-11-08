@@ -6,8 +6,8 @@ namespace SpaceStellar.Game.Ui.MainScreen
     {
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<MainScreenModel>().AsSingle();
-            Container.BindInterfacesAndSelfTo<MainScreenPresenter>().AsSingle();
+            Container.BindInterfacesTo<MainScreenModel>().AsSingle();
+            Container.BindInterfacesTo<MainScreenPresenter>().AsSingle();
 
             Container.Bind<OpenMainScreenCommand>().AsSingle();
         }

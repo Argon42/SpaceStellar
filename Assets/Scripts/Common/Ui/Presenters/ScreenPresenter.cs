@@ -12,6 +12,7 @@ namespace SpaceStellar.Common.Ui.Presenters
         where TView : class, IScreenView
     {
         protected TView? ScreenView { get; private set; }
+        public TModel Model { get; private set; } = default!;
 
         private readonly IViewProvider _viewProvider;
         public override bool IsOpenAvailable => base.IsOpenAvailable && ScreenView != null && IsPrepared;
@@ -33,8 +34,6 @@ namespace SpaceStellar.Common.Ui.Presenters
 
         private UniTask<TView> GetScreenView(CancellationToken token) =>
             _viewProvider.TryGetOrLoadView<TView>(token);
-
-        public TModel Model { get; private set; }
 
         public void SetModel(TModel model)
         {
