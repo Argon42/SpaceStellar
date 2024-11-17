@@ -1,4 +1,5 @@
 using System;
+using SpaceStellar.Common.Ui.Abstraction;
 using SpaceStellar.Common.Ui.Abstraction.Presenters;
 
 namespace SpaceStellar.Common.Ui.Presenters
@@ -33,7 +34,7 @@ namespace SpaceStellar.Common.Ui.Presenters
         protected virtual void OnSetView() { }
     }
 
-    public abstract class Presenter<TModel, TView> : Presenter<TView>, IConfigurablePresenter<TModel, TView>
+    public abstract class Presenter<TModel, TView> : Presenter<TView>, IConfigurablePresenter<TModel, TView> where TView : IView
     {
         public override bool IsOpenAvailable => base.IsOpenAvailable && Model != null;
 

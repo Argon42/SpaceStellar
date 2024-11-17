@@ -1,26 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using SpaceStellar.Common.Ui.Abstraction;
-using SpaceStellar.Common.Ui.Abstraction.Presenters;
 using SpaceStellar.Common.Ui.Views;
-using Zenject;
 
 namespace SpaceStellar.Common.Ui.Presenters
 {
-    public abstract class BaseListPresenter<TCollection, TModel, TPresenterItem, TViewItem> :
+    public abstract class BaseListPresenter<TCollection, TModel> :
         Presenter<TCollection, IListView>
-        where TPresenterItem : IConfigurablePresenter<TModel, TViewItem>
         where TModel : class
-        where TViewItem : class, IView
         where TCollection : class
     {
-        private const bool KeepVelocityOnCountChange = true;
-
-        private readonly IMemoryPool<TPresenterItem> _pool;
-        private readonly Dictionary<int, TPresenterItem> _presenters = new();
-
+        private readonly IPresenterViewPool _pool;
+        private readonly Dictionary<int, PresenterTypelessWrapper> _presenters = new();
         private bool _isWaitInitializing;
 
-        protected BaseListPresenter(IMemoryPool<TPresenterItem> pool)
+        protected BaseListPresenter(IPresenterViewPool pool)
         {
             _pool = pool;
         }
@@ -36,23 +30,20 @@ namespace SpaceStellar.Common.Ui.Presenters
         protected void UpdateList()
         {
             foreach (var item in _presenters.Values)
-            {
-                UnbindPresenter(item);
-                DespawnPresenter(item);
-            }
+                _pool.Despawn(item);
 
             _presenters.Clear();
 
             if (!TryPrepareAdapter())
             {
-                View.ResetItems(GetCountOfElements(), false, KeepVelocityOnCountChange);
+                View.ResetItems(GetCountOfElements());
             }
         }
 
         protected override void OnOpen()
         {
-            View.OnBind += OnViewBinding;
-            View.OnUnbind += OnViewUnbind;
+            View.OnBind = OnViewBinding;
+            View.OnUnbind = OnViewUnbind;
 
             OnOpenInternal();
             UpdateList();
@@ -70,11 +61,11 @@ namespace SpaceStellar.Common.Ui.Presenters
 
             if (View.IsInitialized)
             {
-                View.ResetItems(0, false, KeepVelocityOnCountChange);
+                View.ResetItems(0);
             }
 
-            View.OnBind -= OnViewBinding;
-            View.OnUnbind -= OnViewUnbind;
+            View.OnBind = null;
+            View.OnUnbind = null;
         }
 
         private bool TryPrepareAdapter()
@@ -108,25 +99,20 @@ namespace SpaceStellar.Common.Ui.Presenters
         {
             _isWaitInitializing = false;
             View.Initialized -= OnInitialized;
-            NotifyListChangedExternally();
+            View.ResetItems(GetCountOfElements());
         }
 
-        private void NotifyListChangedExternally(bool freezeEndEdge = false)
-        {
-            View.ResetItems(GetCountOfElements(), freezeEndEdge, KeepVelocityOnCountChange);
-        }
-
-        private void OnViewBinding(int index, IView view)
+        private IView OnViewBinding(int index)
         {
             if (_presenters.ContainsKey(index))
             {
-                return;
+                throw new InvalidOperationException($"Presenter already has element with index {index}");
             }
 
             var model = GetElementByIndex(index);
-            var presenter = CreatePresenter(model);
+            var presenter = _pool.SpawnAndSetupPresenter(model, View);
             _presenters.Add(index, presenter);
-            BindPresenter(presenter, view);
+            return presenter.View;
         }
 
         private void OnViewUnbind(int index)
@@ -136,33 +122,7 @@ namespace SpaceStellar.Common.Ui.Presenters
                 return;
             }
 
-            UnbindPresenter(presenter);
-            DespawnPresenter(presenter);
-        }
-
-        private void BindPresenter(TPresenterItem presenter, IView view)
-        {
-            presenter.SetView((TViewItem)view);
-            presenter.Open();
-        }
-
-        private void UnbindPresenter(TPresenterItem presenter)
-        {
-            presenter.Close();
-            presenter.ResetView();
-        }
-
-        private void DespawnPresenter(TPresenterItem presenter)
-        {
-            presenter.ResetModel();
             _pool.Despawn(presenter);
-        }
-
-        private TPresenterItem CreatePresenter(TModel model)
-        {
-            TPresenterItem presenter = _pool.Spawn();
-            presenter.SetModel(model);
-            return presenter;
         }
     }
 }

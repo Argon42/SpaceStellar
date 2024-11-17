@@ -3,21 +3,20 @@ using SpaceStellar.Common.Ui.Abstraction;
 
 namespace SpaceStellar.Common.Ui.Views
 {
+    public interface IListView : IView, IViewFactory
+    {
+        Func<int, IView>? OnBind { set; }
+        Action<int>? OnUnbind { set; }
+        event Action Initialized;
 
-	public interface IListView : IView
-	{
-		event Action<int, IView> OnBind;
-		event Action<int> OnUnbind;
-		bool IsInitialized { get; }
-		bool InsertAtIndexSupported { get; }
-		int ItemsCount { get; }
-		event Action Initialized;
+        bool IsInitialized { get; }
+        bool InsertAtIndexSupported { get; }
+        int ItemsCount { get; }
 
-		void Init();
+        void Init();
 
-		void ResetItems(int newCount, bool freezeEndEdge, bool keepVelocityOnCountChange);
+        void ResetItems(int newCount);
 
-		void InsertItems(int index, int itemsCount, bool contentPanelEndEdgeStationary, bool keepVelocity);
-	}
-
+        void InsertItems(int index, int itemsCount);
+    }
 }
