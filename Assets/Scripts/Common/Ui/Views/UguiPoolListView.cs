@@ -6,11 +6,9 @@ using UnityEngine;
 
 namespace SpaceStellar.Common.Ui.Views
 {
-    public class PoolListView : UguiView, IListView
+    public class UguiPoolListView : UguiView, IListView
     {
-        [SerializeField] private UguiView itemPrefab = default!;
-        [SerializeField] private RectTransform contentParent = default!;
-        [SerializeField] private List<UguiView> pool = new();
+        [SerializeField] private UguiListViewProvider provider = default!;
 
         private readonly List<UguiView> _binded = new();
 
@@ -23,27 +21,17 @@ namespace SpaceStellar.Common.Ui.Views
 
         public bool InsertAtIndexSupported => true;
 
-        private void Awake() => pool.ForEach(view => view.Deactivate());
+        public void Init() { }
 
-        public void Init()
-        {
-            // not need init
-        }
-
-        public TView Spawn<TView>() where TView : class, IView
-        {
-            if (itemPrefab is TView)
-                return GetFromPool() as TView
-                       ?? throw new InvalidOperationException();
-            throw new InvalidOperationException($"{nameof(PoolListView)} item prefab is not {typeof(TView).Name}");
-        }
+        public TView Spawn<TView>() where TView : class, IView => provider.Spawn<TView>();
 
         public void ResetItems(int newCount)
         {
             for (int i = _binded.Count - 1; i >= 0; i--)
             {
                 OnUnbind?.Invoke(i);
-                ReturnToPool(_binded[i]);
+                _binded.Remove(_binded[i]);
+                provider.ReturnToPool(_binded[i]);
             }
 
             InsertViews(0, newCount);
@@ -52,21 +40,6 @@ namespace SpaceStellar.Common.Ui.Views
         public void InsertItems(int index, int itemsCount) =>
             InsertViews(index, itemsCount);
 
-        private UguiView GetFromPool()
-        {
-            if (pool.Count == 0)
-            {
-                var view = Instantiate(itemPrefab, contentParent);
-                _binded.Add(view);
-                return view;
-            }
-
-            var fromPool = pool[^1];
-            pool.RemoveAt(pool.Count - 1);
-            fromPool.gameObject.SetActive(true);
-            _binded.Add(fromPool);
-            return fromPool;
-        }
 
         private void InsertViews(int fromIndex, int count)
         {
@@ -87,14 +60,6 @@ namespace SpaceStellar.Common.Ui.Views
                 uguiView.transform.SetSiblingIndex(i);
                 _binded.Add(uguiView);
             }
-        }
-
-        private void ReturnToPool(UguiView view)
-        {
-            _binded.Remove(view);
-            pool.Add(view);
-            view.Deactivate();
-            view.transform.SetAsLastSibling();
         }
     }
 }

@@ -29,6 +29,7 @@ namespace SpaceStellar.Common.Ui.Presenters
                 return;
 
             ScreenView = await GetScreenView(token);
+            await OnPrepare(ScreenView);
             IsPrepared = true;
         }
 
@@ -56,6 +57,8 @@ namespace SpaceStellar.Common.Ui.Presenters
             OnResetModel();
             Model = default!;
         }
+
+        protected abstract UniTask OnPrepare(TView view);
 
         protected virtual void OnSetModel() { }
         protected virtual void OnResetModel() { }

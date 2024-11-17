@@ -1,8 +1,13 @@
 using SpaceStellar.Common.Ui.Ugui;
+using SpaceStellar.Common.Ui.Views;
+using UnityEngine;
 
 namespace SpaceStellar.Game.Ui.MainScreen
 {
     public class UguiMainScreenView : UguiScreenView, IMainScreenView
     {
+        [SerializeField] private UguiPoolListView tilesListView = default!;
+
+        public IListView TilesListView => tilesListView;
     }
 }

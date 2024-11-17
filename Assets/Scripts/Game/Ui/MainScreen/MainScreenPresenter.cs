@@ -1,20 +1,52 @@
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using SpaceStellar.Common.Ui.Abstraction;
+using SpaceStellar.Common.Ui.Abstraction.Presenters;
 using SpaceStellar.Common.Ui.Presenters;
+using SpaceStellar.Common.Ui.Presenters.Lists;
 
 namespace SpaceStellar.Game.Ui.MainScreen
 {
+    public interface IMainScreenPresenter : IScreenPresenter<IMainScreenModel> { }
+
     public class MainScreenPresenter : ScreenPresenter<IMainScreenModel, IMainScreenView>, IMainScreenPresenter
     {
-        public MainScreenPresenter(IViewProvider viewProvider) : base(viewProvider)
+        private readonly IReadOnlyListPresenter<MainMenuTile> _listPresenter;
+
+        public MainScreenPresenter(IViewProvider viewProvider,
+            IReadOnlyListPresenter<MainMenuTile> listPresenter)
+            : base(viewProvider)
         {
+            _listPresenter = listPresenter;
+        }
+
+        protected override UniTask OnPrepare(IMainScreenView view)
+        {
+            _listPresenter.SetView(view.TilesListView);
+
+            return UniTask.CompletedTask;
+        }
+
+        protected override void OnSetModel()
+        {
+            base.OnSetModel();
+            _listPresenter.SetModel(Model.Tiles);
+        }
+
+        protected override void OnResetModel()
+        {
+            base.OnResetModel();
+            _listPresenter.ResetModel();
         }
 
         protected override void OnOpen()
         {
+            _listPresenter.Open();
         }
 
         protected override void OnClose()
         {
+            _listPresenter.Close();
         }
     }
 }

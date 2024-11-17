@@ -1,4 +1,7 @@
-﻿using Zenject;
+﻿using SpaceStellar.Common.Ui.Presenters.Lists;
+using SpaceStellar.Game.Ui.MainScreen.Presenters;
+using SpaceStellar.Utility;
+using Zenject;
 
 namespace SpaceStellar.Game.Ui.MainScreen
 {
@@ -8,6 +11,15 @@ namespace SpaceStellar.Game.Ui.MainScreen
         {
             Container.BindInterfacesTo<MainScreenModel>().AsSingle();
             Container.BindInterfacesTo<MainScreenPresenter>().AsSingle();
+
+            Container.BindClassWithPool<BattleTilePresenter>();
+            Container.BindClassWithPool<SimpleTilePresenter>();
+
+            ReadOnlyListPresenterInstaller<MainMenuTile>.InstallInContainer(Container, new[]
+            {
+                typeof(BattleTilePresenter),
+                typeof(SimpleTilePresenter),
+            });
 
             Container.Bind<OpenMainScreenCommand>().AsSingle();
         }

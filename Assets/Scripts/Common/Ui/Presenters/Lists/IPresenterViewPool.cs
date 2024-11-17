@@ -5,7 +5,7 @@ namespace SpaceStellar.Common.Ui.Presenters.Lists
 {
     public interface IPresenterViewPool
     {
-        PresenterTypelessWrapper SpawnAndSetupPresenter<TModel>(TModel model, IViewFactory viewList);
+        PresenterTypelessWrapper SpawnAndSetupPresenter(object model, IViewFactory viewFactory);
         void Despawn(PresenterTypelessWrapper wrapper);
     }
 }

@@ -12,5 +12,13 @@ namespace SpaceStellar.Utility
             installer.InstallBindings();
             container.InjectGameObject(installer.gameObject);
         }
+        
+        public static void BindClassWithPool<T>(this DiContainer container)
+        {
+            container.Bind<T>().AsTransient().WhenInjectedInto<MemoryPool<T>>();
+            container.BindMemoryPoolCustomInterface<T, MemoryPool<T>, IMemoryPool<T>>()
+                .WithInitialSize(2)
+                .ExpandByDoubling();
+        }
     }
 }
