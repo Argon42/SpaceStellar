@@ -2,10 +2,10 @@
 using SpaceStellar.Common.Ui.Abstraction.Presenters;
 using SpaceStellar.Common.Ui.Views;
 
-namespace SpaceStellar.Common.Ui.Presenters
+namespace SpaceStellar.Common.Ui.Presenters.Lists
 {
     public interface IReadOnlyListPresenter<TModelItem> :
-        IConfigurablePresenter<IReadOnlyList<TModelItem>, IListView> where TModelItem : class { }
+        IListPresenter<IReadOnlyList<TModelItem>> where TModelItem : class { }
 
     public class ReadOnlyListPresenter<TModel> :
         BaseListPresenter<IReadOnlyList<TModel>, TModel>,

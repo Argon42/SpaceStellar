@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using SpaceStellar.Common.Ui.Abstraction;
+using SpaceStellar.Common.Ui.Abstraction.Presenters;
+using SpaceStellar.Common.Ui.Presenters.Wrappers;
 using SpaceStellar.Common.Ui.Views;
 
-namespace SpaceStellar.Common.Ui.Presenters
+namespace SpaceStellar.Common.Ui.Presenters.Lists
 {
     public abstract class BaseListPresenter<TCollection, TModel> :
-        Presenter<TCollection, IListView>
+        Presenter<TCollection, IListView>,
+        IListPresenter<TCollection>
         where TModel : class
         where TCollection : class
     {
