@@ -32,38 +32,4 @@ namespace SpaceStellar.Common.Ui.Presenters
             IsOpened = false;
         }
     }
-
-    public abstract class Presenter<TView> : PresentationLayerItem, IChangeableViewPresenter<TView>
-    {
-        public TView View { get; private set; } = default!;
-
-        public void SetView(TView view)
-        {
-            if (View != null)
-                throw new InvalidOperationException($"Presenter {GetType().Name} has model already set");
-
-            View = view;
-            OnSetView();
-        }
-
-        public void ResetView()
-        {
-            if (View == null)
-                throw new InvalidOperationException($"Presenter {GetType().Name} has no view set");
-
-            if (IsOpened)
-                throw new InvalidOperationException($"Presenter {GetType().Name} is opened");
-
-            OnResetView();
-            View = default!;
-        }
-
-        protected virtual void OnResetView()
-        {
-        }
-
-        protected virtual void OnSetView()
-        {
-        }
-    }
 }
