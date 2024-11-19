@@ -1,15 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using SpaceStellar.Common.Ui.Abstraction.Presenters;
 using SpaceStellar.Game.Ui.MainScreen;
 using Zenject;
 
 namespace SpaceStellar.Common.Ui.Presenters.Lists
 {
-    public class ReadOnlyListPresenterInstaller<TBaseModel> : Installer
+    public class ListPresenterInstaller<TListPresenter, TCollection, TBaseModel> : Installer
         where TBaseModel : class
+        where TListPresenter : IListPresenter<TCollection>
     {
         private readonly Type[] _presenters;
 
-        public ReadOnlyListPresenterInstaller(Type[] presenters)
+        public ListPresenterInstaller(Type[] presenters)
         {
             _presenters = presenters;
         }
@@ -24,22 +27,22 @@ namespace SpaceStellar.Common.Ui.Presenters.Lists
                 .To<MultiplePresenterViewPool>()
                 .AsSingle()
                 .WhenInjectedInto<ReadOnlyListPresenter<TBaseModel>>();
-            Container.Bind<IReadOnlyListPresenter<TBaseModel>>()
-                .To<ReadOnlyListPresenter<TBaseModel>>()
+            Container.BindInterfacesAndSelfTo<TListPresenter>()
                 .AsSingle();
         }
 
-        public static ConcreteIdArgConditionCopyNonLazyBinder InstallInContainer(
+        public static ScopeConcreteIdArgConditionCopyNonLazyBinder InstallInContainer(
             DiContainer container,
             Type[] presenters)
         {
             var subContainer = container.CreateSubContainer();
             var args = new object[] { presenters };
-            subContainer.Install<ReadOnlyListPresenterInstaller<MainMenuTile>>(args);
+            subContainer
+                .Install<ListPresenterInstaller<ReadOnlyListPresenter<MainMenuTile>, IReadOnlyList<MainMenuTile>,
+                    MainMenuTile>>(args);
             return container.Bind<IReadOnlyListPresenter<MainMenuTile>>()
                 .FromSubContainerResolve()
-                .ByInstance(subContainer)
-                .AsSingle();
+                .ByInstance(subContainer);
         }
     }
 }
