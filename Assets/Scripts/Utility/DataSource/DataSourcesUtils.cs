@@ -49,13 +49,15 @@ namespace SpaceStellar.Utility.DataSource
         public static IDisposable SubscribeToAllDataReadyAndNotifyAfterReady(
             this IAsyncDataSource self,
             Action onNext,
-            params IAsyncDataSource[] sources) =>
-            SubscribeToAllDataReady(
+            params IAsyncDataSource[] sources)
+        {
+            return SubscribeToAllDataReady(
                 () =>
                 {
                     onNext();
                     SetDataReady(self);
                 }, sources);
+        }
 
         /// <summary>
         /// <para> Позволяет подписаться на готовность всех переданных источников данных. </para>

@@ -11,8 +11,10 @@ namespace SpaceStellar.Common.Ui.WaitingWindow
 
         public IReadonlyWaitingRequest? ActiveWaitingRequest => _requests.FirstOrDefault();
 
-        public bool ContainSender(object waitingRequestSender) =>
-            _requests.Any(request => request.Sender == waitingRequestSender);
+        public bool ContainSender(object waitingRequestSender)
+        {
+            return _requests.Any(request => request.Sender == waitingRequestSender);
+        }
 
         public void Update(IWaitingRequest waitingRequest)
         {
@@ -24,8 +26,8 @@ namespace SpaceStellar.Common.Ui.WaitingWindow
             ThrowIfRequestNotStarted(waitingRequest);
             ThrowIfHasNotRequestWithSender(waitingRequest.Sender);
 
-            int index = GetInfoIndex(waitingRequest.Sender);
-            IReadonlyWaitingRequest waitingRequestCopy = waitingRequest.MemberwiseCopy();
+            var index = GetInfoIndex(waitingRequest.Sender);
+            var waitingRequestCopy = waitingRequest.MemberwiseCopy();
             _requests[index] = waitingRequestCopy;
             SendEventIfRequestActive(waitingRequest);
         }
@@ -40,7 +42,7 @@ namespace SpaceStellar.Common.Ui.WaitingWindow
             ThrowIfRequestNotStarted(waitingRequest);
             ThrowIfContainRequestForSender(waitingRequest.Sender);
 
-            IReadonlyWaitingRequest waitingRequestCopy = waitingRequest.MemberwiseCopy();
+            var waitingRequestCopy = waitingRequest.MemberwiseCopy();
             _requests.Add(waitingRequestCopy);
             SendEventIfRequestActive(waitingRequest);
         }
@@ -49,9 +51,9 @@ namespace SpaceStellar.Common.Ui.WaitingWindow
         {
             ThrowIfHasNotRequestWithSender(sender);
 
-            int index = GetInfoIndex(sender);
-            IReadonlyWaitingRequest waitingRequestForRemove = _requests[index];
-            bool isWaitingRequestWillChange = ActiveWaitingRequest == waitingRequestForRemove;
+            var index = GetInfoIndex(sender);
+            var waitingRequestForRemove = _requests[index];
+            var isWaitingRequestWillChange = ActiveWaitingRequest == waitingRequestForRemove;
             _requests.Remove(waitingRequestForRemove);
 
             if (isWaitingRequestWillChange)

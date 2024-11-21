@@ -20,9 +20,15 @@ namespace SpaceStellar.Common.Ui.Presenters.Lists
     {
         private readonly IMemoryPool<TPresenter> _pool;
 
-        public PresenterViewMatcher(IMemoryPool<TPresenter> pool) => _pool = pool;
+        public PresenterViewMatcher(IMemoryPool<TPresenter> pool)
+        {
+            _pool = pool;
+        }
 
-        public override bool HasMatch(object item) => item.GetType() == typeof(TModel);
+        public override bool HasMatch(object item)
+        {
+            return item.GetType() == typeof(TModel);
+        }
 
         public override PresenterTypelessWrapper CreatePresenter(IViewFactory viewFactory, out IView view)
         {

@@ -11,13 +11,19 @@ namespace SpaceStellar.Common.Ui.Views
         [SerializeField] private RectTransform contentParent = default!;
         [SerializeField] private List<UguiView> pool = new();
 
-        private void Awake() => pool.ForEach(view => view.Deactivate());
+        private void Awake()
+        {
+            pool.ForEach(view => view.Deactivate());
+        }
 
         public override TView Spawn<TView>()
         {
             if (itemPrefab is TView)
+            {
                 return GetFromPool() as TView
                        ?? throw new InvalidOperationException();
+            }
+
             throw new InvalidOperationException($"{nameof(UguiPoolListView)} item prefab is not {typeof(TView).Name}");
         }
 

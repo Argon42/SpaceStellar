@@ -11,7 +11,9 @@ namespace SpaceStellar.Common.Ui.Presenters
         public void SetView(TView view)
         {
             if (View != null)
+            {
                 throw new InvalidOperationException($"Presenter {GetType().Name} has model already set");
+            }
 
             View = view;
             OnSetView();
@@ -20,10 +22,14 @@ namespace SpaceStellar.Common.Ui.Presenters
         public void ResetView()
         {
             if (View == null)
+            {
                 throw new InvalidOperationException($"Presenter {GetType().Name} has no view set");
+            }
 
             if (IsOpened)
+            {
                 throw new InvalidOperationException($"Presenter {GetType().Name} is opened");
+            }
 
             OnResetView();
             View = default!;
@@ -34,7 +40,8 @@ namespace SpaceStellar.Common.Ui.Presenters
         protected virtual void OnSetView() { }
     }
 
-    public abstract class Presenter<TModel, TView> : Presenter<TView>, IConfigurablePresenter<TModel, TView> where TView : IView
+    public abstract class Presenter<TModel, TView> : Presenter<TView>, IConfigurablePresenter<TModel, TView>
+        where TView : IView
     {
         public override bool IsOpenAvailable => base.IsOpenAvailable && Model != null;
 
@@ -47,7 +54,9 @@ namespace SpaceStellar.Common.Ui.Presenters
         public void SetModel(TModel model)
         {
             if (Model != null)
+            {
                 throw new InvalidOperationException($"Presenter {GetType().Name} has model already set");
+            }
 
             Model = model;
             OnSetModel();
@@ -56,10 +65,14 @@ namespace SpaceStellar.Common.Ui.Presenters
         public void ResetModel()
         {
             if (Model == null)
+            {
                 throw new InvalidOperationException($"Presenter {GetType().Name} has no model set");
+            }
 
             if (IsOpened)
+            {
                 throw new InvalidOperationException($"Presenter {GetType().Name} is opened");
+            }
 
             OnResetModel();
             Model = default!;

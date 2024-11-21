@@ -1,4 +1,4 @@
-﻿namespace SpaceStellar.Game.Ui.MainScreen
+﻿namespace SpaceStellar.Meta.Ui.MainScreen
 {
     public abstract class MainMenuTile
     {

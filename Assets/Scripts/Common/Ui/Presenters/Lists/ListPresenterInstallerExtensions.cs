@@ -17,9 +17,11 @@ namespace SpaceStellar.Common.Ui.Presenters.Lists
         public static ScopeConcreteIdArgConditionCopyNonLazyBinder BindReadOnlyListPresenter<TModelBase>(
             this DiContainer container,
             params Type[] presenters)
-            where TModelBase : class =>
-            ListPresenterInstaller<ReadOnlyListPresenter<TModelBase>, IReadOnlyList<TModelBase>, TModelBase>
+            where TModelBase : class
+        {
+            return ListPresenterInstaller<ReadOnlyListPresenter<TModelBase>, IReadOnlyList<TModelBase>, TModelBase>
                 .InstallInContainer(container, presenters);
+        }
 
         /// <summary>
         /// Данный Bind установит в контейнер объект <see cref="ReactiveListPresenter{TModel}"/> по интерфейсу <see cref="IReadOnlyObservableList{TModel}"/>.
@@ -31,8 +33,11 @@ namespace SpaceStellar.Common.Ui.Presenters.Lists
         public static ScopeConcreteIdArgConditionCopyNonLazyBinder BindReactiveListPresenter<TModelBase>(
             this DiContainer container,
             params Type[] presenters)
-            where TModelBase : class =>
-            ListPresenterInstaller<ReactiveListPresenter<TModelBase>, IReadOnlyObservableList<TModelBase>, TModelBase>
+            where TModelBase : class
+        {
+            return ListPresenterInstaller<ReactiveListPresenter<TModelBase>, IReadOnlyObservableList<TModelBase>,
+                    TModelBase>
                 .InstallInContainer(container, presenters);
+        }
     }
 }

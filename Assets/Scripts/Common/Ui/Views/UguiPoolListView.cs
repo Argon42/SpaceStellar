@@ -23,11 +23,14 @@ namespace SpaceStellar.Common.Ui.Views
 
         public void Init() { }
 
-        public TView Spawn<TView>() where TView : class, IView => provider.Spawn<TView>();
+        public TView Spawn<TView>() where TView : class, IView
+        {
+            return provider.Spawn<TView>();
+        }
 
         public void ResetItems(int newCount)
         {
-            for (int i = _binded.Count - 1; i >= 0; i--)
+            for (var i = _binded.Count - 1; i >= 0; i--)
             {
                 OnUnbind?.Invoke(i);
                 _binded.Remove(_binded[i]);
@@ -37,8 +40,10 @@ namespace SpaceStellar.Common.Ui.Views
             InsertViews(0, newCount);
         }
 
-        public void InsertItems(int index, int itemsCount) =>
+        public void InsertItems(int index, int itemsCount)
+        {
             InsertViews(index, itemsCount);
+        }
 
 
         private void InsertViews(int fromIndex, int count)

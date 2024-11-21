@@ -4,6 +4,6 @@
     {
         None = 0,
         Bootstrap = 1,
-        Game = 2,
+        Meta = 2,
     }
 }

@@ -1,14 +1,14 @@
 ﻿using SpaceStellar.Common.Ui.Commands;
-using SpaceStellar.Game.Ui.MainScreen;
+using SpaceStellar.Meta.Ui.MainScreen;
 using Zenject;
 
-namespace SpaceStellar.Game
+namespace SpaceStellar.Meta
 {
-    public class GameFlow : IInitializable
+    public class MetaFlow : IInitializable
     {
         private readonly IUiCommandDispatcher _uiCommandDispatcher;
 
-        public GameFlow(IUiCommandDispatcher uiCommandDispatcher)
+        public MetaFlow(IUiCommandDispatcher uiCommandDispatcher)
         {
             _uiCommandDispatcher = uiCommandDispatcher;
         }

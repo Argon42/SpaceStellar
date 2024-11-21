@@ -20,19 +20,25 @@ namespace SpaceStellar.Bootstrap
         public void EnableLoadingScreen()
         {
             if (!_loadingScreen.IsActive)
+            {
                 _loadingScreen.Activate();
+            }
         }
 
         public void DisableLoadingScreen()
         {
             if (_loadingScreen.IsActive)
+            {
                 _loadingScreen.Deactivate();
+            }
         }
 
         public void ShowProgressTitle(string message)
         {
             if (_loadingScreen.IsActive)
+            {
                 _loadingScreen.ShowProgressTitle(message);
+            }
         }
 
         public void ShowProgress(string message, float progress)

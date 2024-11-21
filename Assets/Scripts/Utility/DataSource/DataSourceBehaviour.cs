@@ -10,7 +10,7 @@ namespace SpaceStellar.Utility.DataSource
     public class DataSourceBehaviour
     {
         private readonly Action m_onPostReset = delegate { };
-        private readonly ReactiveProperty<bool> m_dataReady = new ReactiveProperty<bool>(false);
+        private readonly ReactiveProperty<bool> m_dataReady = new(false);
 
         /// <summary>
         /// <para> Является ли источник данных <b>сбрасываемым</b>, т.е должен ли вызываться <see cref="Reset"/> при входе в мету. </para>
@@ -66,9 +66,13 @@ namespace SpaceStellar.Utility.DataSource
         public void SetReady()
         {
             if (m_dataReady.CurrentValue)
+            {
                 m_dataReady.ForceNotify();
+            }
             else
+            {
                 m_dataReady.Value = true;
+            }
         }
     }
 }

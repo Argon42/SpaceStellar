@@ -1,10 +1,9 @@
 ﻿using SpaceStellar.Common.Ui.Presenters.Lists;
-using SpaceStellar.Game.Ui.MainScreen.Presenters;
-using SpaceStellar.Game.Ui.MainScreen.Views;
+using SpaceStellar.Meta.Ui.MainScreen.Presenters;
 using SpaceStellar.Utility;
 using Zenject;
 
-namespace SpaceStellar.Game.Ui.MainScreen
+namespace SpaceStellar.Meta.Ui.MainScreen
 {
     public class MainScreenInstaller : Installer<MainScreenInstaller>
     {

@@ -7,7 +7,9 @@ namespace SpaceStellar.Common.Ui.WaitingWindow
         PlaceholderFactory<IWaitingWindowDispatcher, object, WaitingWindowBuilder>,
         IWaitingWindowBuilderFactory
     {
-        public new IWaitingWindowBuilder Create(IWaitingWindowDispatcher dispatcher, object sender) =>
-            base.Create(dispatcher, sender);
+        public new IWaitingWindowBuilder Create(IWaitingWindowDispatcher dispatcher, object sender)
+        {
+            return base.Create(dispatcher, sender);
+        }
     }
 }

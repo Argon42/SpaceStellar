@@ -9,7 +9,5 @@ namespace SpaceStellar.Utility
         void Error(string message, params object[] args);
     }
 
-    public interface ILogger<T> : ILogger
-    {
-    }
+    public interface ILogger<T> : ILogger { }
 }

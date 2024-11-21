@@ -33,12 +33,16 @@ namespace SpaceStellar.Common.Ui.Commands
         public void AddToExecutionQueue<T>(T command) where T : IUiCommand
         {
             if (IsDisposed)
+            {
                 throw new ObjectDisposedException($"{GetType().Name}: Already disposed!");
+            }
 
             _screenCommands.Enqueue(command);
 
             if (!IsExecuting)
+            {
                 ExecuteCommands(_cancellationTokenSource.Token).Forget();
+            }
         }
 
         private async UniTask ExecuteCommands(CancellationToken token)

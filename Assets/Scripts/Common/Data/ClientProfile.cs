@@ -1,7 +1,4 @@
 ﻿namespace SpaceStellar.Common.Data
 {
-    public class ClientProfile
-    {
-        
-    }
+    public class ClientProfile { }
 }

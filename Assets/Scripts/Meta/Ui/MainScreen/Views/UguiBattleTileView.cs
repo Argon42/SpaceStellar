@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace SpaceStellar.Game.Ui.MainScreen.Views
+namespace SpaceStellar.Meta.Ui.MainScreen.Views
 {
     public class UguiBattleTileView : UguiView
     {
@@ -14,10 +14,19 @@ namespace SpaceStellar.Game.Ui.MainScreen.Views
 
         public event Action OnClick = delegate { };
 
-        private void Awake() => button.onClick.AddListener(() => OnClick());
+        private void Awake()
+        {
+            button.onClick.AddListener(() => OnClick());
+        }
 
-        public void SetText(string titleText) => title.text = titleText;
+        public void SetText(string titleText)
+        {
+            title.text = titleText;
+        }
 
-        public void SetColor(Color color) => background.color = color;
+        public void SetColor(Color color)
+        {
+            background.color = color;
+        }
     }
 }

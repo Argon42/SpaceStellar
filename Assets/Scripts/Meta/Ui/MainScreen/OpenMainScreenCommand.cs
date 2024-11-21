@@ -1,6 +1,6 @@
 using SpaceStellar.Common.Ui.Commands;
 
-namespace SpaceStellar.Game.Ui.MainScreen
+namespace SpaceStellar.Meta.Ui.MainScreen
 {
     public class OpenMainScreenCommand : OpenScreenCommand<IMainScreenPresenter, IMainScreenModel>
     {

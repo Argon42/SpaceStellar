@@ -5,7 +5,6 @@ namespace SpaceStellar.Utility
 {
     public static class Extensions
     {
-        
         public static TCollection ForEach<TCollection, TElement>(this TCollection collection, Action<TElement> action)
             where TCollection : ICollection<TElement>, IEnumerable<TElement>
             where TElement : notnull
@@ -14,11 +13,9 @@ namespace SpaceStellar.Utility
             {
                 return collection;
             }
-            
+
             foreach (var element in collection)
-            {
                 action(element);
-            }
             return collection;
         }
     }

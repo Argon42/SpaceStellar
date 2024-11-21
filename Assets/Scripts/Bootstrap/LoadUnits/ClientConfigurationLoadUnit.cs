@@ -17,7 +17,10 @@ namespace SpaceStellar.Bootstrap
 
         public UniTask Load()
         {
-            if (!File.Exists("ClientConfiguration.json")) return UniTask.CompletedTask;
+            if (!File.Exists("ClientConfiguration.json"))
+            {
+                return UniTask.CompletedTask;
+            }
 
             var json = File.ReadAllText("ClientConfiguration.json");
             var clientConfiguration = JsonUtility.FromJson<ClientConfiguration>(json);

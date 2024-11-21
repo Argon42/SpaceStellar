@@ -1,17 +1,15 @@
 using SpaceStellar.Common.Ui;
-using SpaceStellar.Game.Ui.MainScreen;
+using SpaceStellar.Meta.Ui.MainScreen;
 using Zenject;
 
-namespace SpaceStellar.Game
+namespace SpaceStellar.Meta
 {
-    public class GameInstaller : MonoInstaller
+    public class MetaInstaller : MonoInstaller
     {
-
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<GameFlow>().AsSingle();
+            Container.BindInterfacesAndSelfTo<MetaFlow>().AsSingle();
 
-            
             InstallUi();
         }
 

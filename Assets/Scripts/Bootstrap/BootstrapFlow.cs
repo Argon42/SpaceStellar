@@ -71,20 +71,17 @@ namespace SpaceStellar.Bootstrap
         {
             _loadingScreenService.ShowProgress("Loading scene...", 0);
 
-            var loading = _sceneSwitcher.SwitchTo(GameScenes.Game);
+            var loading = _sceneSwitcher.SwitchTo(GameScenes.Meta);
             loading.allowSceneActivation = false;
             using var cts = new CancellationTokenSource();
             _ = Observable
                 .EveryValueChanged(loading, x => x.progress)
                 .ForEachAsync(unit =>
                         _loadingScreenService.UpdateProgress(loading.progress),
-                    cancellationToken: cts.Token);
+                    cts.Token);
             await UniTask.WaitUntil(() => loading.progress >= 0.9f, cancellationToken: cts.Token);
             cts.Cancel();
-            return () =>
-            {
-                loading.allowSceneActivation = true;
-            };
+            return () => { loading.allowSceneActivation = true; };
         }
     }
 }

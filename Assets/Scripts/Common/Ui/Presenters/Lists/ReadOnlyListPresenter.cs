@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using SpaceStellar.Common.Ui.Abstraction.Presenters;
-using SpaceStellar.Common.Ui.Views;
 
 namespace SpaceStellar.Common.Ui.Presenters.Lists
 {
@@ -13,9 +12,15 @@ namespace SpaceStellar.Common.Ui.Presenters.Lists
     {
         public ReadOnlyListPresenter(IPresenterViewPool pool) : base(pool) { }
 
-        protected override int GetCountOfElements() => Model.Count;
+        protected override int GetCountOfElements()
+        {
+            return Model.Count;
+        }
 
-        protected override TModel GetElementByIndex(int index) => Model[index];
+        protected override TModel GetElementByIndex(int index)
+        {
+            return Model[index];
+        }
 
         protected override void OnOpenInternal() { }
 

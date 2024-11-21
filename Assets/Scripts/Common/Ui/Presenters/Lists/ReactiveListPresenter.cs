@@ -13,9 +13,15 @@ namespace SpaceStellar.Common.Ui.Presenters.Lists
     {
         public ReactiveListPresenter(IPresenterViewPool pool) : base(pool) { }
 
-        protected override int GetCountOfElements() => Model.Count;
+        protected override int GetCountOfElements()
+        {
+            return Model.Count;
+        }
 
-        protected override TModel GetElementByIndex(int index) => Model[index];
+        protected override TModel GetElementByIndex(int index)
+        {
+            return Model[index];
+        }
 
         protected override void OnOpenInternal()
         {
@@ -28,6 +34,9 @@ namespace SpaceStellar.Common.Ui.Presenters.Lists
             Model.CollectionChanged -= OnCollectionChanged;
         }
 
-        private void OnCollectionChanged(in NotifyCollectionChangedEventArgs<TModel> e) => UpdateList();
+        private void OnCollectionChanged(in NotifyCollectionChangedEventArgs<TModel> e)
+        {
+            UpdateList();
+        }
     }
 }

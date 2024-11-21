@@ -5,7 +5,7 @@ namespace SpaceStellar.Common.Ui.Abstraction.Presenters
         TView View { get; }
         void SetView(TView view);
     }
-    
+
     public interface IChangeableView
     {
         void ResetView();

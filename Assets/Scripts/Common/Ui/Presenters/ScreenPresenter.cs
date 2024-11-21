@@ -26,20 +26,26 @@ namespace SpaceStellar.Common.Ui.Presenters
         public async UniTask Prepare(CancellationToken token)
         {
             if (IsPrepared)
+            {
                 return;
+            }
 
             ScreenView = await GetScreenView(token);
             await OnPrepare(ScreenView);
             IsPrepared = true;
         }
 
-        private UniTask<TView> GetScreenView(CancellationToken token) =>
-            _viewProvider.TryGetOrLoadView<TView>(token);
+        private UniTask<TView> GetScreenView(CancellationToken token)
+        {
+            return _viewProvider.TryGetOrLoadView<TView>(token);
+        }
 
         public void SetModel(TModel model)
         {
             if (Model != null)
+            {
                 throw new InvalidOperationException($"Presenter {GetType().Name} has model already set");
+            }
 
             Model = model;
             OnSetModel();
@@ -49,10 +55,14 @@ namespace SpaceStellar.Common.Ui.Presenters
         public void ResetModel()
         {
             if (Model == null)
+            {
                 throw new InvalidOperationException($"Presenter {GetType().Name} has no model set");
+            }
 
             if (IsOpened)
+            {
                 throw new InvalidOperationException($"Presenter {GetType().Name} is opened");
+            }
 
             OnResetModel();
             Model = default!;

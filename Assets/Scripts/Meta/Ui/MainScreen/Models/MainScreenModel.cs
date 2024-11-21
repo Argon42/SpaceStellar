@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SpaceStellar.Game.Ui.MainScreen
+namespace SpaceStellar.Meta.Ui.MainScreen
 {
     public class MainScreenModel : IMainScreenModel
     {
@@ -11,7 +11,7 @@ namespace SpaceStellar.Game.Ui.MainScreen
             new MainMenuTileSimple("Chat", "placeholder", "", false),
             new MainMenuTileBattle("BattlePVE", "placeholder", "", false, true),
             new MainMenuTileBattle("BattlePVP", "placeholder", "", false, false),
-            new MainMenuTileSimple("Exit", "placeholder", "", false),
+            new MainMenuTileSimple("Exit", "placeholder", "", false)
         };
 
         public IReadOnlyList<MainMenuTile> Tiles => _tiles;

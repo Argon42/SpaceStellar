@@ -35,15 +35,18 @@ namespace SpaceStellar.Common.Ui.Presenters.Lists
             }
         }
 
-        private static Type GetPresenterInterfaceType(Type type) =>
-            type.GetInterfaces()
-                .FirstOrDefault(t =>
-                    t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IConfigurablePresenter<,>))
-            ?? throw new InvalidOperationException(
-                $"{type.Name} is not {typeof(IConfigurablePresenter<,>).Name}");
+        private static Type GetPresenterInterfaceType(Type type)
+        {
+            return type.GetInterfaces()
+                       .FirstOrDefault(t =>
+                           t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IConfigurablePresenter<,>))
+                   ?? throw new InvalidOperationException(
+                       $"{type.Name} is not {typeof(IConfigurablePresenter<,>).Name}");
+        }
 
-        private PresenterViewMatcher[] CreateMatchers(DiContainer container, Type[] presenterTypes) =>
-            presenterTypes.Select(presenterType =>
+        private PresenterViewMatcher[] CreateMatchers(DiContainer container, Type[] presenterTypes)
+        {
+            return presenterTypes.Select(presenterType =>
             {
                 var presenterInterface = GetPresenterInterfaceType(presenterType);
                 var genericArguments = presenterInterface.GetGenericArguments();
@@ -54,9 +57,12 @@ namespace SpaceStellar.Common.Ui.Presenters.Lists
                     typeof(PresenterViewMatcher<,,>)
                         .MakeGenericType(presenterType, modelType, viewType));
             }).ToArray();
+        }
 
-        public PresenterViewMatcher GetMatcher(object item) =>
-            _matchers.FirstOrDefault(matcher => matcher.HasMatch(item)) ??
-            throw new InvalidOperationException("No matchers found");
+        public PresenterViewMatcher GetMatcher(object item)
+        {
+            return _matchers.FirstOrDefault(matcher => matcher.HasMatch(item)) ??
+                   throw new InvalidOperationException("No matchers found");
+        }
     }
 }

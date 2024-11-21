@@ -10,7 +10,9 @@ namespace SpaceStellar.Utility
             clientProfile = default!;
 
             if (!PlayerPrefs.HasKey(key))
+            {
                 return false;
+            }
 
             clientProfile = JsonUtility.FromJson<T>(PlayerPrefs.GetString(key));
             return clientProfile != null;

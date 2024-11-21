@@ -1,7 +1,7 @@
 ﻿using SpaceStellar.Common.Ui.Presenters;
-using SpaceStellar.Game.Ui.MainScreen.Views;
+using SpaceStellar.Meta.Ui.MainScreen.Views;
 
-namespace SpaceStellar.Game.Ui.MainScreen.Presenters
+namespace SpaceStellar.Meta.Ui.MainScreen.Presenters
 {
     public class SimpleTilePresenter : Presenter<MainMenuTileSimple, UguiSimpleTileView>
     {

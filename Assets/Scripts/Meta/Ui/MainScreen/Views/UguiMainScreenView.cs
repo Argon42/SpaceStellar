@@ -2,7 +2,7 @@ using SpaceStellar.Common.Ui.Ugui;
 using SpaceStellar.Common.Ui.Views;
 using UnityEngine;
 
-namespace SpaceStellar.Game.Ui.MainScreen
+namespace SpaceStellar.Meta.Ui.MainScreen
 {
     public class UguiMainScreenView : UguiScreenView, IMainScreenView
     {

@@ -1,4 +1,4 @@
 ﻿namespace SpaceStellar.Common.Ui.Abstraction
 {
-    public interface IScreenView : IView {}
+    public interface IScreenView : IView { }
 }

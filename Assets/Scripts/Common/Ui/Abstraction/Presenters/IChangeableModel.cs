@@ -5,6 +5,7 @@ namespace SpaceStellar.Common.Ui.Abstraction.Presenters
         TModel Model { get; }
         void SetModel(TModel model);
     }
+
     public interface IChangeableModel
     {
         void ResetModel();

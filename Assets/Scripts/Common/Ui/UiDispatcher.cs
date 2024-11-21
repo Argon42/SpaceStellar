@@ -33,7 +33,7 @@ namespace SpaceStellar.Common.Ui
         public UniTask Open<TPresenter, TModel>(TModel model, CancellationToken token)
             where TPresenter : IPresentationLayerItem
         {
-            TPresenter presenter = _presenterProvider.GetPresenter<TPresenter, TModel>();
+            var presenter = _presenterProvider.GetPresenter<TPresenter, TModel>();
             return SafeOpenAsync(presenter, model, token);
         }
 
@@ -54,7 +54,9 @@ namespace SpaceStellar.Common.Ui
                 }
 
                 if (presenter is IWindowPresenter<TModel> windowPresenter)
+                {
                     _windowDispatcher.ShowWindow(windowPresenter, model);
+                }
             }
             catch (Exception e)
             {
@@ -67,10 +69,14 @@ namespace SpaceStellar.Common.Ui
             where TPresenter : IPresentationLayerItem
         {
             if (presenter is not IPreparable preparable)
+            {
                 return;
+            }
 
             if (preparable.IsPrepared)
+            {
                 return;
+            }
 
             _waitingWindowDispatcher.CreateWaiting(this).Show();
             await preparable.Prepare(token);

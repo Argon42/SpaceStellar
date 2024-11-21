@@ -6,7 +6,11 @@ namespace SpaceStellar.Common.Ui.WaitingWindow
     {
         public bool IsRequestStarted { get; private set; }
         public object? Sender { get; private set; }
-        public IReadonlyWaitingRequest MemberwiseCopy() => (IReadonlyWaitingRequest)MemberwiseClone();
+
+        public IReadonlyWaitingRequest MemberwiseCopy()
+        {
+            return (IReadonlyWaitingRequest)MemberwiseClone();
+        }
 
         public void Start()
         {

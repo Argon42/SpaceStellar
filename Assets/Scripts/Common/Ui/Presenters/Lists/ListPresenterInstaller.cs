@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SpaceStellar.Common.Ui.Abstraction.Presenters;
-using SpaceStellar.Game.Ui.MainScreen;
+using SpaceStellar.Meta.Ui.MainScreen;
 using Zenject;
 
 namespace SpaceStellar.Common.Ui.Presenters.Lists

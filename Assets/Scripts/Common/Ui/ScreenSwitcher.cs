@@ -21,7 +21,7 @@ namespace SpaceStellar.Common.Ui
             screenPresenter.SetModel(model);
             screenPresenter.Open();
 
-            IScreenPresenter? previousScreen = ActiveScreen;
+            var previousScreen = ActiveScreen;
             ActiveScreen = screenPresenter;
             OnSectionChangedEvent.Invoke(previousScreen, ActiveScreen);
 

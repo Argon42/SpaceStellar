@@ -13,11 +13,12 @@ namespace SpaceStellar.Common.Ui.Ugui
         public T? GetScreenPrefab<T>() where T : IView
         {
             IView? prefab = screenPrefabs.FirstOrDefault(view => view is T);
-            
+
             if (prefab == null)
             {
                 return default!;
             }
+
             return (T)prefab;
         }
     }

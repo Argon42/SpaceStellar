@@ -14,7 +14,7 @@ namespace SpaceStellar.Common
 
         private AsyncOperation SwitchTo(string name)
         {
-            return SceneManager.LoadSceneAsync(name, LoadSceneMode.Single) 
+            return SceneManager.LoadSceneAsync(name, LoadSceneMode.Single)
                    ?? throw new InvalidOperationException($"Failed to switch to scene '{name}'");
         }
     }

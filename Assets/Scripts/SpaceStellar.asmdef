@@ -1,20 +1,20 @@
 {
-    "name": "SpaceStellar",
-    "rootNamespace": "SpaceStellar",
-    "references": [
-        "R3.Unity",
-        "Zenject",
-        "UniTask",
-        "Unity.Addressables",
-        "Unity.TextMeshPro"
-    ],
-    "includePlatforms": [],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+  "name": "SpaceStellar",
+  "rootNamespace": "SpaceStellar",
+  "references": [
+    "R3.Unity",
+    "Zenject",
+    "UniTask",
+    "Unity.Addressables",
+    "Unity.TextMeshPro"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
 }

@@ -14,10 +14,14 @@ namespace SpaceStellar.Common.Ui.Presenters
         public void Open()
         {
             if (!IsOpenAvailable)
+            {
                 throw new InvalidOperationException($"Presenter {GetType().Name} is not open available");
+            }
 
             if (IsOpened)
+            {
                 throw new InvalidOperationException($"Presenter {GetType().Name} is already opened");
+            }
 
             OnOpen();
             IsOpened = true;
@@ -26,7 +30,9 @@ namespace SpaceStellar.Common.Ui.Presenters
         public void Close()
         {
             if (!IsOpened)
+            {
                 throw new InvalidOperationException($"Presenter {GetType().Name} is not opened");
+            }
 
             OnClose();
             IsOpened = false;

@@ -1,11 +1,10 @@
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using SpaceStellar.Common.Ui.Abstraction;
 using SpaceStellar.Common.Ui.Abstraction.Presenters;
 using SpaceStellar.Common.Ui.Presenters;
 using SpaceStellar.Common.Ui.Presenters.Lists;
 
-namespace SpaceStellar.Game.Ui.MainScreen
+namespace SpaceStellar.Meta.Ui.MainScreen
 {
     public interface IMainScreenPresenter : IScreenPresenter<IMainScreenModel> { }
 

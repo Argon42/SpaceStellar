@@ -22,7 +22,10 @@ namespace SpaceStellar.Common.Ui.WaitingWindow
             _logger = logger;
         }
 
-        public IWaitingWindowBuilder CreateWaiting(object sender) => _waitingWindowBuilderFactory.Create(this, sender);
+        public IWaitingWindowBuilder CreateWaiting(object sender)
+        {
+            return _waitingWindowBuilderFactory.Create(this, sender);
+        }
 
         public void Hide(object sender)
         {
