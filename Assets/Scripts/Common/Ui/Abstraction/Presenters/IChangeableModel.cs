@@ -2,7 +2,7 @@ namespace SpaceStellar.Common.Ui.Abstraction.Presenters
 {
     public interface IChangeableModel<TModel> : IChangeableModel
     {
-        TModel Model { get; }
+        TModel? Model { get; }
         void SetModel(TModel model);
     }
 

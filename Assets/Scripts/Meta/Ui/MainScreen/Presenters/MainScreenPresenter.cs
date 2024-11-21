@@ -1,3 +1,4 @@
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using SpaceStellar.Common.Ui.Abstraction;
 using SpaceStellar.Common.Ui.Abstraction.Presenters;
@@ -19,9 +20,16 @@ namespace SpaceStellar.Meta.Ui.MainScreen
             _listPresenter = listPresenter;
         }
 
-        protected override UniTask OnPrepare(IMainScreenView view)
+        protected override UniTask OnSetView(IMainScreenView view, CancellationToken token)
         {
             _listPresenter.SetView(view.TilesListView);
+
+            return UniTask.CompletedTask;
+        }
+
+        protected override UniTask OnResetView(CancellationToken token)
+        {
+            _listPresenter.ResetView();
 
             return UniTask.CompletedTask;
         }

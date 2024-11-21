@@ -22,7 +22,6 @@ namespace SpaceStellar.Common.Ui.Ugui
             _uguiScreenPrefabStorage = uguiScreenPrefabStorage;
         }
 
-
         public bool TryGetView<TView>([NotNullWhen(true)] out TView? view) where TView : class, IView
         {
             if (_screenViews.TryGetValue(typeof(TView), out var screenView))
@@ -52,6 +51,17 @@ namespace SpaceStellar.Common.Ui.Ugui
             var view = viewMonoBehaviour.GetComponent<TView>();
             _screenViews.Add(typeof(TView), view);
             return UniTask.FromResult(view);
+        }
+
+        public void Release<TView>(TView view) where TView : class, IScreenView
+        {
+            _screenViews.Remove(typeof(TView));
+            if (view is not UguiView uguiView)
+            {
+                throw new InvalidOperationException("View is not UguiView");
+            }
+
+            Object.Destroy(uguiView.gameObject);
         }
     }
 }

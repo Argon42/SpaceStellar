@@ -8,15 +8,17 @@ namespace SpaceStellar.Common.Ui.Presenters
 {
     public abstract class ScreenPresenter<TModel, TView> : PresentationLayerItem,
         IScreenPresenter<TModel>,
-        IPreparable
+        IPreparable,
+        IOptimizable
         where TView : class, IScreenView
     {
         protected TView? ScreenView { get; private set; }
-        public TModel Model { get; private set; } = default!;
+        public TModel? Model { get; private set; }
 
         private readonly IViewProvider _viewProvider;
         public override bool IsOpenAvailable => base.IsOpenAvailable && ScreenView != null && IsPrepared;
         public bool IsPrepared { get; private set; }
+        public virtual bool IsCanOptimize => IsPrepared && !IsOpened;
 
         protected ScreenPresenter(IViewProvider viewProvider)
         {
@@ -31,8 +33,32 @@ namespace SpaceStellar.Common.Ui.Presenters
             }
 
             ScreenView = await GetScreenView(token);
-            await OnPrepare(ScreenView);
-            IsPrepared = true;
+            try
+            {
+                await OnSetView(ScreenView, token);
+                IsPrepared = true;
+            }
+            catch
+            {
+                ReleaseView();
+                throw;
+            }
+        }
+
+        async UniTask IOptimizable.Optimize(CancellationToken token)
+        {
+            if (ScreenView == null)
+            {
+                throw new InvalidOperationException($"Presenter {GetType().Name} has no view set");
+            }
+
+            if (!IsCanOptimize)
+            {
+                throw new InvalidOperationException($"Presenter {GetType().Name} can't be optimized");
+            }
+
+            await OnResetView(token);
+            ReleaseView();
         }
 
         private UniTask<TView> GetScreenView(CancellationToken token)
@@ -68,9 +94,24 @@ namespace SpaceStellar.Common.Ui.Presenters
             Model = default!;
         }
 
-        protected abstract UniTask OnPrepare(TView view);
+        protected abstract UniTask OnSetView(TView view, CancellationToken token);
+
+        protected abstract UniTask OnResetView(CancellationToken token);
 
         protected virtual void OnSetModel() { }
+
         protected virtual void OnResetModel() { }
+
+        private void ReleaseView()
+        {
+            if (ScreenView == null)
+            {
+                return;
+            }
+
+            _viewProvider.Release(ScreenView);
+            IsPrepared = false;
+            ScreenView = null;
+        }
     }
 }
