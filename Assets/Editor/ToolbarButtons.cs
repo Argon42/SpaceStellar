@@ -1,4 +1,7 @@
-﻿using UnityEditor;
+﻿using System;
+using System.Linq;
+using SpaceStellar.Common;
+using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityToolbarExtender;
@@ -8,6 +11,12 @@ namespace SpaceStellar.Editor
     [InitializeOnLoad]
     public class ToolbarButtons
     {
+        private static readonly GameScenes[] SceneNamesInToolbar =
+        {
+            GameScenes.Bootstrap,
+            GameScenes.Meta,
+        };
+
         static ToolbarButtons()
         {
             ToolbarExtender.RightToolbarGUI.Add(OnToolbarGUI);
@@ -18,22 +27,22 @@ namespace SpaceStellar.Editor
         {
             GUILayout.FlexibleSpace();
 
-            if(GUILayout.Button(new GUIContent("Boot", "Open Scene")))
+
+            foreach (var sceneName in SceneNamesInToolbar)
             {
-                EditorSceneManager.OpenScene("Assets/Scenes/Bootstrap.unity");
-                AssetDatabase.Refresh();
-            }
-            
-            if(GUILayout.Button(new GUIContent("Game", "Open Scene")))
-            {
-                EditorSceneManager.OpenScene("Assets/Scenes/Game.unity");
+                if (!GUILayout.Button(new GUIContent(sceneName.ToString(), "Open Scene")))
+                {
+                    continue;
+                }
+
+                EditorSceneManager.OpenScene($"Assets/Scenes/{sceneName}.unity");
                 AssetDatabase.Refresh();
             }
         }
 
         static void OnToolbarGUI()
         {
-            if(GUILayout.Button(new GUIContent("Play from boot", "Start Scene from boot scene")))
+            if (GUILayout.Button(new GUIContent("Play from boot", "Start Scene from boot scene")))
             {
                 EditorSceneManager.OpenScene("Assets/Scenes/Bootstrap.unity");
                 EditorApplication.isPlaying = true;
