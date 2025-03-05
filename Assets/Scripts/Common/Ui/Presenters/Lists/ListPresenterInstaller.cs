@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using SpaceStellar.Common.Ui.Abstraction.Presenters;
-using SpaceStellar.Meta.Ui.MainScreen;
+using SpaceStellar.Common.Ui.Presenters.Lists.Abstraction;
+using SpaceStellar.Common.Ui.Presenters.Lists.Common;
 using Zenject;
 
 namespace SpaceStellar.Common.Ui.Presenters.Lists
@@ -38,9 +39,9 @@ namespace SpaceStellar.Common.Ui.Presenters.Lists
             var subContainer = container.CreateSubContainer();
             var args = new object[] { presenters };
             subContainer
-                .Install<ListPresenterInstaller<ReadOnlyListPresenter<MainMenuTile>, IReadOnlyList<MainMenuTile>,
-                    MainMenuTile>>(args);
-            return container.Bind<IReadOnlyListPresenter<MainMenuTile>>()
+                .Install<ListPresenterInstaller<ReadOnlyListPresenter<TBaseModel>, IReadOnlyList<TBaseModel>,
+                    TBaseModel>>(args);
+            return container.Bind<IReadOnlyListPresenter<TBaseModel>>()
                 .FromSubContainerResolve()
                 .ByInstance(subContainer);
         }

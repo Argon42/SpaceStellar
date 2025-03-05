@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 
-namespace SpaceStellar.Common.Ui.Presenters
+namespace SpaceStellar.Common.Ui.Abstraction
 {
     public interface IOptimizable
     {

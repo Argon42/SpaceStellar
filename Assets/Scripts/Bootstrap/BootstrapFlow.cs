@@ -2,6 +2,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using R3;
+using SpaceStellar.Bootstrap.LoadUnits;
 using SpaceStellar.Common;
 using SpaceStellar.Utility;
 using Zenject;
@@ -18,7 +19,6 @@ namespace SpaceStellar.Bootstrap
         private readonly LoadingScreenService _loadingScreenService;
         private readonly CachedDataLoaderUnit _cachedDataLoaderUnit;
         private readonly ClientConfigurationLoadUnit _clientConfigurationLoadUnit;
-        private readonly CompositeDisposable _compositeDisposable = new();
         private readonly CancellationTokenSource _cancellationTokenSource = new();
 
         public BootstrapFlow(
@@ -41,7 +41,6 @@ namespace SpaceStellar.Bootstrap
 
         public void Dispose()
         {
-            _compositeDisposable.Dispose();
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
         }
@@ -52,12 +51,10 @@ namespace SpaceStellar.Bootstrap
             _loadingScreenService.EnableLoadingScreen();
             _loadingScreenService.ShowProgress("Loading...", 0);
             await _loadingService.BeginLoading(_configurationLoadUnit);
-
-            _logger.Debug("Loading cached data");
+            await _loadingService.BeginLoading(_clientConfigurationLoadUnit);
             _loadingScreenService.UpdateProgress(0.5f);
             await _loadingService.BeginLoading(_cachedDataLoaderUnit);
 
-            _logger.Debug("Application is started");
             var activateScene = await LoadGameScene();
 
             _logger.Debug("Game scene is loaded");
@@ -76,7 +73,7 @@ namespace SpaceStellar.Bootstrap
             using var cts = new CancellationTokenSource();
             _ = Observable
                 .EveryValueChanged(loading, x => x.progress)
-                .ForEachAsync(unit =>
+                .ForEachAsync(_ =>
                         _loadingScreenService.UpdateProgress(loading.progress),
                     cts.Token);
             await UniTask.WaitUntil(() => loading.progress >= 0.9f, cancellationToken: cts.Token);

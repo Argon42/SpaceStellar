@@ -8,9 +8,9 @@ namespace SpaceStellar.Common.Ui.Ugui
     [CreateAssetMenu(fileName = "UguiScreenPrefabStorage", menuName = "Stellar/UI/UguiScreenPrefabStorage", order = 1)]
     public class UguiScreenPrefabStorage : ScriptableObject
     {
-        [SerializeField] private List<UguiScreenView> screenPrefabs = new();
+        [SerializeField] private List<UguiView> screenPrefabs = new();
 
-        public T? GetScreenPrefab<T>() where T : IView
+        public T? GetViewPrefab<T>() where T : IView
         {
             IView? prefab = screenPrefabs.FirstOrDefault(view => view is T);
 

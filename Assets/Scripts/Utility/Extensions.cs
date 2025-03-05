@@ -1,21 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace SpaceStellar.Utility
 {
     public static class Extensions
     {
-        public static TCollection ForEach<TCollection, TElement>(this TCollection collection, Action<TElement> action)
-            where TCollection : ICollection<TElement>, IEnumerable<TElement>
+        [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
+        public static IEnumerable<TElement> ForEach<TElement>(this IEnumerable<TElement> collection,
+            Action<TElement> action)
             where TElement : notnull
         {
-            if (collection is not { Count: not 0 })
+            if (collection == null)
             {
-                return collection;
+                throw new ArgumentNullException(nameof(collection));
             }
 
             foreach (var element in collection)
+            {
                 action(element);
+            }
+
             return collection;
         }
     }

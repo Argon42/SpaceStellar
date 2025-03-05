@@ -14,14 +14,14 @@ namespace SpaceStellar.Common.Ui
         private readonly IScreenSwitcher _screenSwitcher;
         private readonly IWaitingWindowDispatcher _waitingWindowDispatcher;
         private readonly IWindowDispatcher _windowDispatcher;
-        private readonly ILogger<UiDispatcher> _logger;
+        private readonly ILogger _logger;
 
         public UiDispatcher(
             IPresenterProvider presenterProvider,
             IWaitingWindowDispatcher waitingWindowDispatcher,
             IScreenSwitcher screenSwitcher,
             IWindowDispatcher windowDispatcher,
-            ILogger<UiDispatcher> logger)
+            ILogger logger)
         {
             _presenterProvider = presenterProvider;
             _waitingWindowDispatcher = waitingWindowDispatcher;

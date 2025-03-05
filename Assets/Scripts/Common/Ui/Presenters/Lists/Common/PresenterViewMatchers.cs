@@ -3,7 +3,7 @@ using System.Linq;
 using SpaceStellar.Common.Ui.Abstraction.Presenters;
 using Zenject;
 
-namespace SpaceStellar.Common.Ui.Presenters.Lists
+namespace SpaceStellar.Common.Ui.Presenters.Lists.Common
 {
     public class PresenterViewMatchers
     {

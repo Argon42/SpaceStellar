@@ -1,11 +1,12 @@
 ﻿using System;
 using SpaceStellar.Common.Ui.Abstraction;
 using SpaceStellar.Common.Ui.Abstraction.Presenters;
+using SpaceStellar.Common.Ui.Presenters.Lists.Abstraction;
 using SpaceStellar.Common.Ui.Presenters.Wrappers;
 using SpaceStellar.Common.Ui.Views;
 using Zenject;
 
-namespace SpaceStellar.Common.Ui.Presenters.Lists
+namespace SpaceStellar.Common.Ui.Presenters.Lists.Common
 {
     public class SinglePresenterViewPool<TModel, TPresenter, TView> : IPresenterViewPool
         where TView : class, IView

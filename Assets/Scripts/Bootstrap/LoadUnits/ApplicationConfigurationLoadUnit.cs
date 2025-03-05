@@ -2,7 +2,7 @@
 using SpaceStellar.Utility;
 using UnityEngine;
 
-namespace SpaceStellar.Bootstrap
+namespace SpaceStellar.Bootstrap.LoadUnits
 {
     public class ApplicationConfigurationLoadUnit : ILoadUnit
     {

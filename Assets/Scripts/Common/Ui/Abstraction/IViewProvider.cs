@@ -14,6 +14,6 @@ namespace SpaceStellar.Common.Ui.Abstraction
             return !TryGetView(out TView? view) ? LoadView<TView>(token) : UniTask.FromResult(view);
         }
 
-        void Release<TView>(TView view) where TView : class, IScreenView;
+        void Release<TView>(TView view) where TView : class, IView;
     }
 }

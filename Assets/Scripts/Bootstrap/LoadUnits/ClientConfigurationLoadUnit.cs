@@ -4,7 +4,7 @@ using SpaceStellar.Common.Data;
 using SpaceStellar.Utility;
 using UnityEngine;
 
-namespace SpaceStellar.Bootstrap
+namespace SpaceStellar.Bootstrap.LoadUnits
 {
     public class ClientConfigurationLoadUnit : ILoadUnit
     {

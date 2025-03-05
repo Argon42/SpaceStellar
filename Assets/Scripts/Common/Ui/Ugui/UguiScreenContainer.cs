@@ -36,7 +36,7 @@ namespace SpaceStellar.Common.Ui.Ugui
 
         public UniTask<TView> LoadView<TView>(CancellationToken token) where TView : class, IView
         {
-            var prefab = _uguiScreenPrefabStorage.GetScreenPrefab<TView>();
+            var prefab = _uguiScreenPrefabStorage.GetViewPrefab<TView>();
             if (prefab == null)
             {
                 throw new NotSupportedException($"View {typeof(TView).Name} not found in config");
@@ -53,7 +53,7 @@ namespace SpaceStellar.Common.Ui.Ugui
             return UniTask.FromResult(view);
         }
 
-        public void Release<TView>(TView view) where TView : class, IScreenView
+        public void Release<TView>(TView view) where TView : class, IView
         {
             _screenViews.Remove(typeof(TView));
             if (view is not UguiView uguiView)

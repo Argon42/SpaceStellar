@@ -5,7 +5,7 @@ using SpaceStellar.Common.Ui.Abstraction.Presenters;
 using SpaceStellar.Common.Ui.Presenters.Wrappers;
 using SpaceStellar.Common.Ui.Views;
 
-namespace SpaceStellar.Common.Ui.Presenters.Lists
+namespace SpaceStellar.Common.Ui.Presenters.Lists.Abstraction
 {
     public abstract class BaseListPresenter<TCollection, TModel> :
         Presenter<TCollection, IListView>,

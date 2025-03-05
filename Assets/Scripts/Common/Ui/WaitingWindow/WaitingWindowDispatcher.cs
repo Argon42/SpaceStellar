@@ -8,13 +8,13 @@ namespace SpaceStellar.Common.Ui.WaitingWindow
         private readonly IWaitingWindowModel _model;
         private readonly IWaitingWindowPresenter _presenter;
         private readonly IWaitingWindowBuilderFactory _waitingWindowBuilderFactory;
-        private readonly ILogger<WaitingWindowDispatcher> _logger;
+        private readonly ILogger _logger;
 
         public WaitingWindowDispatcher(
             IWaitingWindowModel model,
             IWaitingWindowPresenter presenter,
             IWaitingWindowBuilderFactory waitingWindowBuilderFactory,
-            ILogger<WaitingWindowDispatcher> logger)
+            ILogger logger)
         {
             _model = model;
             _presenter = presenter;

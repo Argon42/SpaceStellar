@@ -2,7 +2,7 @@
 using SpaceStellar.Common.Data;
 using SpaceStellar.Utility;
 
-namespace SpaceStellar.Bootstrap
+namespace SpaceStellar.Bootstrap.LoadUnits
 {
     public class CachedDataLoaderUnit : ILoadUnit
     {

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using SpaceStellar.Common.Ui.Abstraction.Presenters;
+using SpaceStellar.Common.Ui.Presenters.Lists.Abstraction;
 
 namespace SpaceStellar.Common.Ui.Presenters.Lists
 {
