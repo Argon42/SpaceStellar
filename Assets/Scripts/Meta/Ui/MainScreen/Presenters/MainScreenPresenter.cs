@@ -4,8 +4,10 @@ using SpaceStellar.Common.Ui.Abstraction;
 using SpaceStellar.Common.Ui.Abstraction.Presenters;
 using SpaceStellar.Common.Ui.Presenters;
 using SpaceStellar.Common.Ui.Presenters.Lists;
+using SpaceStellar.Meta.Ui.MainScreen.Models;
+using SpaceStellar.Meta.Ui.MainScreen.Views;
 
-namespace SpaceStellar.Meta.Ui.MainScreen
+namespace SpaceStellar.Meta.Ui.MainScreen.Presenters
 {
     public interface IMainScreenPresenter : IScreenPresenter<IMainScreenModel> { }
 

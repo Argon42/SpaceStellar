@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SpaceStellar.Meta.Ui.MainScreen
+namespace SpaceStellar.Meta.Ui.MainScreen.Models
 {
     public class MainScreenModel : IMainScreenModel
     {

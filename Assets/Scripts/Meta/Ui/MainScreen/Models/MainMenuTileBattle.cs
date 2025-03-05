@@ -1,4 +1,4 @@
-﻿namespace SpaceStellar.Meta.Ui.MainScreen
+﻿namespace SpaceStellar.Meta.Ui.MainScreen.Models
 {
     public class MainMenuTileBattle : MainMenuTile
     {
