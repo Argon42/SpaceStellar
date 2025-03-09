@@ -16,10 +16,7 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction
         private readonly Dictionary<int, PresenterTypelessWrapper> _presenters = new();
         private bool _isWaitInitializing;
 
-        protected BaseListPresenter(IPresenterViewPool pool)
-        {
-            _pool = pool;
-        }
+        protected BaseListPresenter(IPresenterViewPool pool) => _pool = pool;
 
         protected abstract int GetCountOfElements();
 
@@ -32,7 +29,7 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction
         protected void UpdateList()
         {
             foreach (var item in _presenters.Values)
-                _pool.Despawn(item);
+                _pool.CloseAndDespawnPresenter(item);
 
             _presenters.Clear();
 
@@ -44,9 +41,7 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction
 
         protected override void OnOpen()
         {
-            View.OnBind = OnViewBinding;
-            View.OnUnbind = OnViewUnbind;
-
+            View.StartWork(OnViewBinding, OnViewUnbind);
             OnOpenInternal();
             UpdateList();
         }
@@ -66,8 +61,7 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction
                 View.ResetItems(0);
             }
 
-            View.OnBind = null;
-            View.OnUnbind = null;
+            View.StopWork();
         }
 
         private bool TryPrepareAdapter()
@@ -124,7 +118,7 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction
                 return;
             }
 
-            _pool.Despawn(presenter);
+            _pool.CloseAndDespawnPresenter(presenter);
         }
     }
 }

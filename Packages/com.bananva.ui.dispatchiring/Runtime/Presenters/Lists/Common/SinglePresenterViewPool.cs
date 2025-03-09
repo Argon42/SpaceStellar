@@ -34,7 +34,7 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Common
             return wrapper;
         }
 
-        public void Despawn(PresenterTypelessWrapper wrapper)
+        public void CloseAndDespawnPresenter(PresenterTypelessWrapper wrapper)
         {
             if (wrapper.LayerItem is not TPresenter presenter)
             {

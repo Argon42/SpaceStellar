@@ -6,6 +6,6 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction
     public interface IPresenterViewPool
     {
         PresenterTypelessWrapper SpawnAndSetupPresenter(object model, IViewFactory viewFactory);
-        void Despawn(PresenterTypelessWrapper wrapper);
+        void CloseAndDespawnPresenter(PresenterTypelessWrapper wrapper);
     }
 }

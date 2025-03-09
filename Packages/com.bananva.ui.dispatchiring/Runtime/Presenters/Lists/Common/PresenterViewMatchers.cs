@@ -15,7 +15,11 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Common
             _matchers = CreateMatchers(container, presenterTypes);
         }
 
-        private void ValidateTypes(Type[] presenterTypes)
+        public PresenterViewMatcher GetMatcher(object item) =>
+            _matchers.FirstOrDefault(matcher => matcher.HasMatch(item))
+            ?? throw new InvalidOperationException("No matchers found");
+
+        private static void ValidateTypes(Type[] presenterTypes)
         {
             foreach (var type in presenterTypes)
             {
@@ -35,18 +39,15 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Common
             }
         }
 
-        private static Type GetPresenterInterfaceType(Type type)
-        {
-            return type.GetInterfaces()
-                       .FirstOrDefault(t =>
-                           t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IConfigurablePresenter<,>))
-                   ?? throw new InvalidOperationException(
-                       $"{type.Name} is not {typeof(IConfigurablePresenter<,>).Name}");
-        }
+        private static Type GetPresenterInterfaceType(Type type) =>
+            type.GetInterfaces().FirstOrDefault(IsConfigurablePresenter)
+            ?? throw new InvalidOperationException($"{type.Name} is not {typeof(IConfigurablePresenter<,>).Name}");
 
-        private PresenterViewMatcher[] CreateMatchers(DiContainer container, Type[] presenterTypes)
-        {
-            return presenterTypes.Select(presenterType =>
+        private static bool IsConfigurablePresenter(Type type) =>
+            type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IConfigurablePresenter<,>);
+
+        private static PresenterViewMatcher[] CreateMatchers(DiContainer container, Type[] presenterTypes) =>
+            presenterTypes.Select(presenterType =>
             {
                 var presenterInterface = GetPresenterInterfaceType(presenterType);
                 var genericArguments = presenterInterface.GetGenericArguments();
@@ -57,12 +58,5 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Common
                     typeof(PresenterViewMatcher<,,>)
                         .MakeGenericType(presenterType, modelType, viewType));
             }).ToArray();
-        }
-
-        public PresenterViewMatcher GetMatcher(object item)
-        {
-            return _matchers.FirstOrDefault(matcher => matcher.HasMatch(item)) ??
-                   throw new InvalidOperationException("No matchers found");
-        }
     }
 }

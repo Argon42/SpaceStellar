@@ -26,7 +26,6 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists
 
         protected override void OnOpenInternal()
         {
-            UpdateList();
             Model.CollectionChanged += OnCollectionChanged;
         }
 
