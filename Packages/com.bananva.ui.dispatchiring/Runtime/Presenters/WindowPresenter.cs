@@ -13,10 +13,19 @@ namespace Bananva.UI.Dispatchiring.Presenters
         IOptimizable
         where TView : class, IWindowView
     {
-        protected TView? WindowView { get; private set; }
-        public TModel? Model { get; private set; }
+        private TView? _windowView;
+        private TModel? _model;
         private readonly IViewProvider _viewProvider;
-        public override bool IsOpenAvailable => base.IsOpenAvailable && WindowView != null && IsPrepared;
+
+        protected TView WindowView =>
+            _windowView ?? throw new InvalidOperationException($"Presenter {GetType().Name} has no view set");
+
+        public TModel Model =>
+            _model ?? throw new InvalidOperationException($"Presenter {GetType().Name} has no model set");
+
+        public bool HasModel => !Equals(_model, default(TModel));
+        
+        public override bool IsOpenAvailable => base.IsOpenAvailable && HasModel && IsPrepared;
         public bool IsPrepared { get; private set; }
         public virtual bool IsCanOptimize => IsPrepared && !IsOpened;
 
@@ -32,7 +41,7 @@ namespace Bananva.UI.Dispatchiring.Presenters
                 return;
             }
 
-            WindowView = await GetScreenView(token);
+            _windowView = await GetScreenView(token);
             try
             {
                 await OnSetView(WindowView, token);
@@ -68,18 +77,18 @@ namespace Bananva.UI.Dispatchiring.Presenters
 
         public void SetModel(TModel model)
         {
-            if (Model != null)
+            if (HasModel)
             {
                 throw new InvalidOperationException($"Presenter {GetType().Name} has model already set");
             }
 
-            Model = model;
+            _model = model;
             OnSetModel();
         }
 
         public void ResetModel()
         {
-            if (Model == null)
+            if (!HasModel)
             {
                 throw new InvalidOperationException($"Presenter {GetType().Name} has no model set");
             }
@@ -90,7 +99,7 @@ namespace Bananva.UI.Dispatchiring.Presenters
             }
 
             OnResetModel();
-            Model = default!;
+            _model = default!;
         }
 
         protected abstract UniTask OnSetView(TView view, CancellationToken token);
@@ -101,14 +110,14 @@ namespace Bananva.UI.Dispatchiring.Presenters
 
         private void ReleaseView()
         {
-            if (WindowView == null)
+            if (_windowView == null)
             {
                 return;
             }
 
-            _viewProvider.Release(WindowView);
+            _viewProvider.Release(_windowView);
             IsPrepared = false;
-            WindowView = null;
+            _windowView = null;
         }
     }
 }

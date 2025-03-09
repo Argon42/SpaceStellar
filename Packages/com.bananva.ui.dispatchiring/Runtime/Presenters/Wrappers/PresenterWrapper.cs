@@ -4,16 +4,22 @@ using Bananva.UI.Dispatchiring.Api.Presenters;
 
 namespace Bananva.UI.Dispatchiring.Presenters.Wrappers
 {
-    public class PresenterWrapper<TPresenter, TModel, TView> : PresenterTypelessWrapper
+    public sealed class PresenterWrapper<TPresenter, TModel, TView> : PresenterTypelessWrapper
         where TPresenter : IConfigurablePresenter<TModel, TView>
         where TView : class, IView
     {
         private TPresenter Presenter { get; }
         private TView? _view;
+        private TModel? _model;
 
         public override bool IsOpened => _view != null;
-        public override IView View => _view ?? throw new InvalidOperationException();
         public override IPresentationLayerItem LayerItem => Presenter;
+
+        public override IView View =>
+            _view ?? throw new InvalidOperationException("PresenterWrapper has no view set");
+
+        public override object Model =>
+            _model ?? throw new InvalidOperationException("PresenterWrapper has no model set");
 
         public PresenterWrapper(TPresenter presenter)
         {
@@ -33,6 +39,7 @@ namespace Bananva.UI.Dispatchiring.Presenters.Wrappers
             }
 
             _view = typedView;
+            _model = typedModel;
             Presenter.SetView(typedView);
             Presenter.SetModel(typedModel);
             Presenter.Open();

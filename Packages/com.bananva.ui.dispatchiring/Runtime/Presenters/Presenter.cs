@@ -6,22 +6,29 @@ namespace Bananva.UI.Dispatchiring.Presenters
 {
     public abstract class Presenter<TView> : PresentationLayerItem, IChangeableViewPresenter<TView>
     {
-        public TView View { get; private set; } = default!;
+        private TView? _view;
+
+        public TView View =>
+            _view ?? throw new InvalidOperationException($"Presenter {GetType().Name} has no view set");
+
+        public bool HasView => !Equals(_view, default(TView));
+
+        public override bool IsOpenAvailable => base.IsOpenAvailable && HasView;
 
         public void SetView(TView view)
         {
-            if (View != null)
+            if (HasView)
             {
                 throw new InvalidOperationException($"Presenter {GetType().Name} has model already set");
             }
 
-            View = view;
+            _view = view;
             OnSetView();
         }
 
         public void ResetView()
         {
-            if (View == null)
+            if (!HasView)
             {
                 throw new InvalidOperationException($"Presenter {GetType().Name} has no view set");
             }
@@ -32,7 +39,7 @@ namespace Bananva.UI.Dispatchiring.Presenters
             }
 
             OnResetView();
-            View = default!;
+            _view = default;
         }
 
         protected virtual void OnResetView() { }
@@ -43,28 +50,33 @@ namespace Bananva.UI.Dispatchiring.Presenters
     public abstract class Presenter<TModel, TView> : Presenter<TView>, IConfigurablePresenter<TModel, TView>
         where TView : IView
     {
-        public override bool IsOpenAvailable => base.IsOpenAvailable && Model != null;
+        private TModel? _model;
+        public override bool IsOpenAvailable => base.IsOpenAvailable && HasModel;
 
-        public TModel Model { get; private set; } = default!;
+        public TModel Model =>
+            _model ?? throw new InvalidOperationException($"Presenter {GetType().Name} has no model set");
+
+        public bool HasModel => !Equals(_model, default(TModel));
 
         protected virtual void OnSetModel() { }
 
         protected virtual void OnResetModel() { }
 
+
         public void SetModel(TModel model)
         {
-            if (Model != null)
+            if (HasModel)
             {
                 throw new InvalidOperationException($"Presenter {GetType().Name} has model already set");
             }
 
-            Model = model;
+            _model = model;
             OnSetModel();
         }
 
         public void ResetModel()
         {
-            if (Model == null)
+            if (!HasModel)
             {
                 throw new InvalidOperationException($"Presenter {GetType().Name} has no model set");
             }
@@ -75,7 +87,7 @@ namespace Bananva.UI.Dispatchiring.Presenters
             }
 
             OnResetModel();
-            Model = default!;
+            _model = default;
         }
     }
 }
