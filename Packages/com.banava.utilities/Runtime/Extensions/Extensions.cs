@@ -23,5 +23,15 @@ namespace Bananva.Utilities.Extensions
 
             return collection;
         }
+
+        public static T ThrowIfArgumentNull<T>(this T? value) where T : class
+        {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            return value;
+        }
     }
 }

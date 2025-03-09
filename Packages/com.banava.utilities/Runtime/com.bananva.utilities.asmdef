@@ -4,7 +4,8 @@
     "references": [
         "Zenject",
         "R3.Unity",
-        "UniTask"
+        "UniTask",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
