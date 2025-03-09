@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
+using Bananva.UI.Dispatchiring.Api;
 using Cysharp.Threading.Tasks;
-using SpaceStellar.Common.Ui.Abstraction;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace SpaceStellar.Common.Ui.Ugui
+namespace Bananva.UI.Dispatchiring.Ugui
 {
     public class UguiScreenContainer : IViewProvider
     {
@@ -49,6 +49,11 @@ namespace SpaceStellar.Common.Ui.Ugui
             }
 
             var view = viewMonoBehaviour.GetComponent<TView>();
+            if (view == null)
+            {
+                throw new InvalidOperationException("Failed to get view component");
+            }
+
             _screenViews.Add(typeof(TView), view);
             return UniTask.FromResult(view);
         }

@@ -1,4 +1,4 @@
-﻿using SpaceStellar.Common.Ui.Commands;
+﻿using Bananva.UI.Dispatchiring.Commands;
 using SpaceStellar.Meta.Ui.MainScreen;
 using Zenject;
 

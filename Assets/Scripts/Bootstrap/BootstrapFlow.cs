@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading;
+using Bananva.LoadingService;
 using Cysharp.Threading.Tasks;
 using R3;
 using SpaceStellar.Bootstrap.LoadUnits;
 using SpaceStellar.Common;
-using SpaceStellar.Utility;
 using Zenject;
-using ILogger = SpaceStellar.Utility.ILogger;
+using ILogger = Bananva.Utilities.Logger.ILogger;
 
 namespace SpaceStellar.Bootstrap
 {

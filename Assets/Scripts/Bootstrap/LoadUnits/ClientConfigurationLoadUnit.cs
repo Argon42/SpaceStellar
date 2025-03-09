@@ -1,7 +1,7 @@
 ﻿using System.IO;
+using Bananva.LoadingService;
 using Cysharp.Threading.Tasks;
 using SpaceStellar.Common.Data;
-using SpaceStellar.Utility;
 using UnityEngine;
 
 namespace SpaceStellar.Bootstrap.LoadUnits

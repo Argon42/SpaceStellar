@@ -1,0 +1,15 @@
+{
+  "name": "com.banava.loading-service",
+  "displayName": "B_Loading Service",
+  "version": "0.0.1",
+  "unity": "2021.3",
+  "description": "Loading Service package, from [t.me/UniArchitect](https://t.me/UniArchitect/46), [github](https://github.com/vangogih/unity-empty-project-template)",
+  "keywords": [
+    "loading",
+    "bootstrap"
+  ],
+  "dependencies": {
+    "com.banava.utilities" : "0.0.1",
+    "com.cysharp.unitask": "2.5.4"
+  }
+}

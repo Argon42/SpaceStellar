@@ -1,5 +1,34 @@
 {
   "dependencies": {
+    "com.bananva.ui.dispatchiring": {
+      "version": "file:com.bananva.ui.dispatchiring",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cysharp.unitask": "2.5.4",
+        "com.svermeulen.extenject": "9.2.0-stcf3",
+        "com.banava.utilities": "0.0.1"
+      }
+    },
+    "com.banava.loading-service": {
+      "version": "file:com.banava.loading-service",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.banava.utilities": "0.0.1",
+        "com.cysharp.unitask": "2.5.4"
+      }
+    },
+    "com.banava.utilities": {
+      "version": "file:com.banava.utilities",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cysharp.r3": "1.2.9",
+        "com.cysharp.unitask": "2.5.4",
+        "com.svermeulen.extenject": "9.2.0-stcf3"
+      }
+    },
     "com.cysharp.r3": {
       "version": "1.2.9",
       "depth": 0,

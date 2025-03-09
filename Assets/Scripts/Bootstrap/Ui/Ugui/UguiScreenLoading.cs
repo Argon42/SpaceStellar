@@ -1,4 +1,4 @@
-﻿using SpaceStellar.Common.Ui.Ugui;
+﻿using Bananva.UI.Dispatchiring.Ugui;
 using TMPro;
 using UnityEngine;
 

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using SpaceStellar.Common.Ui.Abstraction;
+using Bananva.UI.Dispatchiring.Api;
 using UnityEngine;
 
-namespace SpaceStellar.Common.Ui.Ugui
+namespace Bananva.UI.Dispatchiring.Ugui
 {
     [CreateAssetMenu(fileName = "UguiScreenPrefabStorage", menuName = "Stellar/UI/UguiScreenPrefabStorage", order = 1)]
     public class UguiScreenPrefabStorage : ScriptableObject
@@ -16,7 +16,7 @@ namespace SpaceStellar.Common.Ui.Ugui
 
             if (prefab == null)
             {
-                return default!;
+                return default;
             }
 
             return (T)prefab;

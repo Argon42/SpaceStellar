@@ -1,0 +1,15 @@
+﻿{
+  "name": "com.bananva.ui.dispatchiring",
+  "displayName": "B_UI_Dispatchiring",
+  "version": "0.0.1",
+  "unity": "2021.3",
+  "description": "Base of ui management",
+  "keywords": [
+    "ui"
+  ],
+  "dependencies": {
+    "com.cysharp.unitask": "2.5.4",
+    "com.svermeulen.extenject": "9.2.0-stcf3",
+    "com.banava.utilities" : "0.0.1"
+  }
+}

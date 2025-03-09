@@ -1,5 +1,5 @@
 ﻿using System;
-using SpaceStellar.Utility.DataSource;
+using Bananva.Utilities.DataSource;
 
 namespace SpaceStellar.Common.Data
 {

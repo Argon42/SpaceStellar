@@ -1,5 +1,5 @@
-﻿using SpaceStellar.Bootstrap.Ui;
-using SpaceStellar.Common.Ui.Abstraction;
+﻿using Bananva.UI.Dispatchiring.Api;
+using SpaceStellar.Bootstrap.Ui;
 
 namespace SpaceStellar.Bootstrap
 {

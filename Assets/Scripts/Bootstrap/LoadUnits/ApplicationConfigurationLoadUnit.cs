@@ -1,5 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
-using SpaceStellar.Utility;
+﻿using Bananva.LoadingService;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace SpaceStellar.Bootstrap.LoadUnits

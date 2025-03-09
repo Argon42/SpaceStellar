@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace SpaceStellar.Common.Ui.Ugui
+namespace Bananva.UI.Dispatchiring.Ugui
 {
     public class UguiRootInstaller : MonoInstaller
     {
