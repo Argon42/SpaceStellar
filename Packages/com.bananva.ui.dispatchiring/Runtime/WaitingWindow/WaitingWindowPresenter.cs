@@ -1,25 +1,23 @@
+using System;
 using Bananva.UI.Dispatchiring.Presenters;
 using Bananva.UI.Dispatchiring.WaitingWindow.Abstraction;
 
 namespace Bananva.UI.Dispatchiring.WaitingWindow
 {
-    internal class WaitingWindowPresenter : Presenter<IWaitingWindowModel>, IWaitingWindowPresenter
+    internal class WaitingWindowPresenter : Presenter<IWaitingWindowView>, IWaitingWindowPresenter, IDisposable
     {
-        private readonly IWaitingWindowView _view;
+        public WaitingWindowPresenter(IWaitingWindowView view) => SetView(view);
 
-        public WaitingWindowPresenter(IWaitingWindowView view)
-        {
-            _view = view;
-        }
+        public void Dispose() => ResetView();
 
         protected override void OnOpen()
         {
-            _view.Activate();
+            View.Activate();
         }
 
         protected override void OnClose()
         {
-            _view.Deactivate();
+            View.Deactivate();
         }
     }
 }
