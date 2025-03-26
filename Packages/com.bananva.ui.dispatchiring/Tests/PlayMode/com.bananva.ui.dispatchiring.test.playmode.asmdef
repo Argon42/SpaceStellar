@@ -1,0 +1,26 @@
+{
+    "name": "com.bananva.ui.dispatchiring.test.playmode",
+    "rootNamespace": "",
+    "references": [
+        "com.bananva.ui.dispatchiring",
+        "UnityEngine.TestRunner",
+        "UniTask",
+        "Zenject",
+        "Zenject-TestFramework",
+        "com.bananva.utilities"
+    ],
+    "includePlatforms": [
+        "Editor",
+        "GameCoreXboxOne"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
