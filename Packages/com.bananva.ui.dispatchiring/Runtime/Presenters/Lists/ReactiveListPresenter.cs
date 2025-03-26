@@ -1,4 +1,6 @@
-﻿using Bananva.UI.Dispatchiring.Api.Presenters;
+﻿using System;
+using System.Collections.Specialized;
+using Bananva.UI.Dispatchiring.Api.Presenters;
 using Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction;
 using ObservableCollections;
 
@@ -14,29 +16,35 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists
     {
         public ReactiveListPresenter(IPresenterViewPool pool) : base(pool) { }
 
-        protected override int GetCountOfElements()
-        {
-            return Model.Count;
-        }
+        protected override int GetCountOfElements() => Model.Count;
 
-        protected override TModel GetElementByIndex(int index)
-        {
-            return Model[index];
-        }
+        protected override TModel GetElementByIndex(int index) => Model[index];
 
-        protected override void OnOpenInternal()
-        {
-            Model.CollectionChanged += OnCollectionChanged;
-        }
+        protected override void OnOpenInternal() => Model.CollectionChanged += OnCollectionChanged;
 
-        protected override void OnCloseInternal()
-        {
-            Model.CollectionChanged -= OnCollectionChanged;
-        }
+        protected override void OnCloseInternal() => Model.CollectionChanged -= OnCollectionChanged;
 
         private void OnCollectionChanged(in NotifyCollectionChangedEventArgs<TModel> e)
         {
-            UpdateList();
+            switch (e.Action, e.IsSingleItem)
+            {
+                case (NotifyCollectionChangedAction.Add, true):
+                    InsertElements(e.NewStartingIndex, 1);
+                    break;
+                case (NotifyCollectionChangedAction.Add, false):
+                    InsertElements(e.NewStartingIndex, e.NewItems.Length);
+                    break;
+                case (NotifyCollectionChangedAction.Remove, true):
+                    RemoveElements(e.OldStartingIndex, 1);
+                    break;
+                case (NotifyCollectionChangedAction.Remove, false):
+                    RemoveElements(e.OldStartingIndex, e.OldItems.Length);
+                    break;
+                default:
+                    // TODO: добавить оставшиеся методы
+                    UpdateList();
+                    break;
+            }
         }
     }
 }

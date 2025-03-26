@@ -1,25 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using Bananva.UI.Dispatchiring.Api.Presenters;
 using Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction;
 using Bananva.UI.Dispatchiring.Presenters.Lists.Common;
+using Bananva.Utilities.Extensions;
 using Zenject;
 
 namespace Bananva.UI.Dispatchiring.Presenters.Lists
 {
-    public class ListPresenterInstaller<TListPresenter, TCollection, TBaseModel> : Installer
+    public class ListPresenterInstaller<TListPresenter, TContractListPresenter, TCollection, TBaseModel> : Installer
         where TBaseModel : class
-        where TListPresenter : IListPresenter<TCollection>
+        where TListPresenter : TContractListPresenter, IListPresenter<TCollection>
     {
         private readonly Type[] _presenters;
 
-        public ListPresenterInstaller(Type[] presenters)
-        {
-            _presenters = presenters;
-        }
+        public ListPresenterInstaller(Type[] presenters) => _presenters = presenters;
 
         public override void InstallBindings()
         {
+            _presenters.ForEach(type =>
+            {
+                typeof(ZenjectExtensions)
+                    .GetMethod(nameof(ZenjectExtensions.BindClassWithPool))!
+                    .MakeGenericMethod(type)
+                    .Invoke(null, new object[] { Container });
+            });
             Container.Bind<PresenterViewMatchers>()
                 .AsSingle()
                 .WithArguments(_presenters)
@@ -27,23 +31,23 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists
             Container.Bind<IPresenterViewPool>()
                 .To<MultiplePresenterViewPool>()
                 .AsSingle()
-                .WhenInjectedInto<ReadOnlyListPresenter<TBaseModel>>();
+                .WhenInjectedInto<TListPresenter>();
             Container.BindInterfacesAndSelfTo<TListPresenter>()
                 .AsSingle();
         }
 
-        public static ScopeConcreteIdArgConditionCopyNonLazyBinder InstallInContainer(
+        public static ConcreteIdArgConditionCopyNonLazyBinder InstallInContainer(
             DiContainer container,
             Type[] presenters)
         {
             var subContainer = container.CreateSubContainer();
             var args = new object[] { presenters };
             subContainer
-                .Install<ListPresenterInstaller<ReadOnlyListPresenter<TBaseModel>, IReadOnlyList<TBaseModel>,
-                    TBaseModel>>(args);
-            return container.Bind<IReadOnlyListPresenter<TBaseModel>>()
+                .Install<ListPresenterInstaller<TListPresenter, TContractListPresenter, TCollection, TBaseModel>>(args);
+            return container.Bind<TContractListPresenter>()
                 .FromSubContainerResolve()
-                .ByInstance(subContainer);
+                .ByInstance(subContainer)
+                .AsCached();
         }
     }
 }

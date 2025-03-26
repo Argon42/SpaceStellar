@@ -14,12 +14,16 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists
         /// <param name="presenters">То какие презентеры будут создаваться для работы в списке. Для каждого будет создан <see cref="IMemoryPool"/></param>
         /// <typeparam name="TModelBase">Базовый класс модели хранимой в списке <see cref="IReadOnlyList{TModelBase}"/> который будет отображаться</typeparam>
         /// <returns></returns>
-        public static ScopeConcreteIdArgConditionCopyNonLazyBinder BindReadOnlyListPresenter<TModelBase>(
+        public static ConcreteIdArgConditionCopyNonLazyBinder BindReadOnlyListPresenter<TModelBase>(
             this DiContainer container,
             params Type[] presenters)
             where TModelBase : class
         {
-            return ListPresenterInstaller<ReadOnlyListPresenter<TModelBase>, IReadOnlyList<TModelBase>, TModelBase>
+            return ListPresenterInstaller<
+                    ReadOnlyListPresenter<TModelBase>,
+                    IReadOnlyListPresenter<TModelBase>,
+                    IReadOnlyList<TModelBase>,
+                    TModelBase>
                 .InstallInContainer(container, presenters);
         }
 
@@ -30,12 +34,15 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists
         /// <param name="presenters">То какие презентеры будут создаваться для работы в списке. Для каждого будет создан <see cref="IMemoryPool"/></param>
         /// <typeparam name="TModelBase">Базовый класс модели хранимой в списке <see cref="IReadOnlyObservableList{TModelBase}"/> который будет отображаться</typeparam>
         /// <returns></returns>
-        public static ScopeConcreteIdArgConditionCopyNonLazyBinder BindReactiveListPresenter<TModelBase>(
+        public static ConcreteIdArgConditionCopyNonLazyBinder BindReactiveListPresenter<TModelBase>(
             this DiContainer container,
             params Type[] presenters)
             where TModelBase : class
         {
-            return ListPresenterInstaller<ReactiveListPresenter<TModelBase>, IReadOnlyObservableList<TModelBase>,
+            return ListPresenterInstaller<
+                    ReactiveListPresenter<TModelBase>,
+                    IReactiveListPresenter<TModelBase>,
+                    IReadOnlyObservableList<TModelBase>,
                     TModelBase>
                 .InstallInContainer(container, presenters);
         }

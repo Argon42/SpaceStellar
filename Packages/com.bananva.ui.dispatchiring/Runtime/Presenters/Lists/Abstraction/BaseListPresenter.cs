@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Bananva.UI.Dispatchiring.Api;
 using Bananva.UI.Dispatchiring.Api.Presenters;
 using Bananva.UI.Dispatchiring.Presenters.Wrappers;
+using UnityEngine;
 
 namespace Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction
 {
@@ -15,6 +17,7 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction
         private readonly IPresenterViewPool _pool;
         private readonly Dictionary<int, PresenterTypelessWrapper> _presenters = new();
         private bool _isWaitInitializing;
+        private readonly List<int> _keysToShift = new();
 
         protected BaseListPresenter(IPresenterViewPool pool) => _pool = pool;
 
@@ -28,25 +31,54 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction
 
         protected void UpdateList()
         {
-            foreach (var item in _presenters.Values)
-                _pool.CloseAndDespawnPresenter(item);
-
-            _presenters.Clear();
-
             if (!TryPrepareAdapter())
             {
                 View.ResetItems(GetCountOfElements());
             }
         }
 
-        protected override void OnOpen()
+        protected void InsertElements(int from, int count)
+        {
+            if (TryPrepareAdapter())
+            {
+                return;
+            }
+
+            if (!View.WorkWithIndexSupported)
+            {
+                View.ResetItems(GetCountOfElements());
+                return;
+            }
+
+            ShiftElements(from, count);
+            View.InsertItems(from, count);
+        }
+
+        protected void RemoveElements(int from, int count)
+        {
+            if (TryPrepareAdapter())
+            {
+                return;
+            }
+
+            if (!View.WorkWithIndexSupported)
+            {
+                View.ResetItems(GetCountOfElements());
+                return;
+            }
+
+            View.RemoveItems(from, count);
+            ShiftElements(from, -count);
+        }
+
+        protected sealed override void OnOpen()
         {
             View.StartWork(OnViewBinding, OnViewUnbind);
             OnOpenInternal();
             UpdateList();
         }
 
-        protected override void OnClose()
+        protected sealed override void OnClose()
         {
             OnCloseInternal();
 
@@ -115,10 +147,35 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction
         {
             if (!_presenters.Remove(index, out var presenter))
             {
+                Debug.LogError($"Presenter not found, but view was unbinded {index}");
                 return;
             }
 
             _pool.CloseAndDespawnPresenter(presenter);
+        }
+
+        private void ShiftElements(int from, int count)
+        {
+            foreach (var key in _presenters.Keys)
+            {
+                if (key >= from)
+                {
+                    _keysToShift.Add(key);
+                }
+            }
+
+            var orderedEnumerable = count > 0
+                ? _keysToShift.OrderByDescending(i => i)
+                : _keysToShift.OrderBy(i => i);
+
+            foreach (var key in orderedEnumerable)
+            {
+                var value = _presenters[key];
+                _presenters.Remove(key);
+                _presenters[key + count] = value;
+            }
+
+            _keysToShift.Clear();
         }
     }
 }

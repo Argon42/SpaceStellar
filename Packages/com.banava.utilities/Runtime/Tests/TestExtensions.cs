@@ -142,7 +142,7 @@ namespace Bananva.Utilities.Tests
 
         [PublicAPI]
         [SuppressMessage("ReSharper", "PossibleMultipleEnumeration")]
-        public static IEnumerable<T> ForEach<T>(this IEnumerable<T> enumerable, Action<T> action)
+        internal static IEnumerable<T> ForEach<T>(this IEnumerable<T> enumerable, Action<T> action)
         {
             enumerable.ThrowIfArgumentNull();
             action.ThrowIfArgumentNull();

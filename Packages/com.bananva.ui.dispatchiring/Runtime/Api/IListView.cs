@@ -8,6 +8,7 @@ namespace Bananva.UI.Dispatchiring.Api
 
         bool IsInitialized { get; }
         int ItemsCount { get; }
+        bool WorkWithIndexSupported { get; }
 
         void Init();
 

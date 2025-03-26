@@ -16,11 +16,9 @@ namespace SpaceStellar.Meta.Ui.MainScreen
             Container.BindClassWithPool<BattleTilePresenter>();
             Container.BindClassWithPool<SimpleTilePresenter>();
 
-            Container
-                .BindReadOnlyListPresenter<MainMenuTile>(
+            Container.BindReadOnlyListPresenter<MainMenuTile>(
                     typeof(BattleTilePresenter),
-                    typeof(SimpleTilePresenter))
-                .AsSingle();
+                    typeof(SimpleTilePresenter));
 
             Container.Bind<OpenMainScreenCommand>().AsSingle();
         }

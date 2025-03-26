@@ -19,6 +19,8 @@ namespace Bananva.UI.Dispatchiring.Views
         public event Action Initialized = delegate { };
         public int ItemsCount => _binded.Count;
 
+        public bool WorkWithIndexSupported => true;
+
         public void Init() { }
 
         public void StartWork(Func<int, IView> onBind, Action<int> onUnbind)
@@ -38,11 +40,7 @@ namespace Bananva.UI.Dispatchiring.Views
 
         public void ResetItems(int newCount)
         {
-            for (var i = _binded.Count - 1; i >= 0; i--)
-            {
-                RemoveView(i);
-            }
-
+            RemoveItems(0, _binded.Count);
             InsertViews(0, newCount);
         }
 
@@ -50,7 +48,7 @@ namespace Bananva.UI.Dispatchiring.Views
 
         public void RemoveItems(int index, int itemsCount)
         {
-            for (var i = index; i < index + itemsCount; i++)
+            for (int i = index + itemsCount - 1; i >= index; i--)
             {
                 RemoveView(i);
             }
@@ -67,8 +65,9 @@ namespace Bananva.UI.Dispatchiring.Views
         private void RemoveView(int index)
         {
             OnUnbind?.Invoke(index);
-            _binded.Remove(_binded[index]);
-            provider.ReturnToPool(_binded[index]);
+            var view = _binded[index];
+            _binded.Remove(view);
+            provider.ReturnToPool(view);
         }
 
         private void CreateView(int i)
