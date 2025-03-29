@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Bananva.UI.Dispatchiring.Ugui;
 using UnityEngine;
 
@@ -11,9 +12,21 @@ namespace Bananva.UI.Dispatchiring.Views
         [SerializeField] private RectTransform contentParent = default!;
         [SerializeField] private List<UguiView> pool = new();
 
+        private readonly HashSet<UguiView> _markForDisable = new();
+
         private void Awake()
         {
             pool.ForEach(view => view.Deactivate());
+        }
+
+        private void LateUpdate()
+        {
+            while (_markForDisable.Count > 0)
+            {
+                var view = _markForDisable.First();
+                _markForDisable.Remove(view);
+                view.Deactivate();
+            }
         }
 
         public override TView Spawn<TView>()
@@ -38,13 +51,14 @@ namespace Bananva.UI.Dispatchiring.Views
             var fromPool = pool[^1];
             pool.RemoveAt(pool.Count - 1);
             fromPool.Activate();
+            _markForDisable.Remove(fromPool);
             return fromPool;
         }
 
         public override void ReturnToPool(UguiView view)
         {
             pool.Add(view);
-            view.Deactivate();
+            _markForDisable.Add(view);
             view.transform.SetAsLastSibling();
         }
     }

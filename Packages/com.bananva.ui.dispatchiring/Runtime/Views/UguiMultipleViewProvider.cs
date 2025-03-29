@@ -13,6 +13,17 @@ namespace Bananva.UI.Dispatchiring.Views
         [SerializeField] private RectTransform contentParent = default!;
 
         private List<UguiView> _viewPool = new();
+        private readonly HashSet<UguiView> _markForDisable = new();
+
+        private void LateUpdate()
+        {
+            while (_markForDisable.Count > 0)
+            {
+                var view = _markForDisable.First();
+                _markForDisable.Remove(view);
+                view.Deactivate();
+            }
+        }
 
         public override TView Spawn<TView>()
         {
@@ -29,12 +40,13 @@ namespace Bananva.UI.Dispatchiring.Views
 
             _viewPool.Remove(view);
             typedView.Activate();
+            _markForDisable.Remove(view);
             return typedView;
         }
 
         public override void ReturnToPool(UguiView view)
         {
-            view.Deactivate();
+            _markForDisable.Add(view);
             view.transform.SetAsLastSibling();
             _viewPool.Add(view);
         }
