@@ -40,6 +40,13 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists
                 case (NotifyCollectionChangedAction.Remove, false):
                     RemoveElements(e.OldStartingIndex, e.OldItems.Length);
                     break;
+                case (NotifyCollectionChangedAction.Replace, true):
+                    ReplaceElement(e.NewStartingIndex);
+                    break;
+                case (NotifyCollectionChangedAction.Move, true):
+                    ReplaceElement(e.OldStartingIndex);
+                    ReplaceElement(e.NewStartingIndex);
+                    break;
                 default:
                     // TODO: добавить оставшиеся методы
                     UpdateList();

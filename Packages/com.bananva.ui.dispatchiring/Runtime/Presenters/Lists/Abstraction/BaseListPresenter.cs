@@ -71,6 +71,16 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction
             ShiftElements(from, -count);
         }
 
+        protected void ReplaceElement(int index)
+        {
+            if (!_presenters.ContainsKey(index) || TryPrepareAdapter())
+            {
+                return;
+            }
+            
+            View.ReplaceItem(index);
+        }
+
         protected sealed override void OnOpen()
         {
             View.StartWork(OnViewBinding, OnViewUnbind);

@@ -20,5 +20,6 @@ namespace Bananva.UI.Dispatchiring.Api
         void InsertItems(int index, int itemsCount);
 
         void RemoveItems(int index, int itemsCount);
+        void ReplaceItem(int index);
     }
 }

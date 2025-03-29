@@ -54,6 +54,12 @@ namespace Bananva.UI.Dispatchiring.Views
             }
         }
 
+        public void ReplaceItem(int index)
+        {
+            RemoveView(index);
+            CreateView(index);
+        }
+
         private void InsertViews(int fromIndex, int count)
         {
             for (var i = fromIndex; i < fromIndex + count; i++)
