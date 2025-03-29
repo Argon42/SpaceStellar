@@ -12,7 +12,7 @@ namespace Bananva.UI.Dispatchiring.Views
         [SerializeField] private List<UguiView> prefabs = new();
         [SerializeField] private RectTransform contentParent = default!;
 
-        private List<UguiView> _viewPool = new();
+        private readonly List<UguiView> _viewPool = new();
         private readonly HashSet<UguiView> _markForDisable = new();
 
         private void LateUpdate()

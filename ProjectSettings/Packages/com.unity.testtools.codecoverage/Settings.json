@@ -1,0 +1,36 @@
+{
+    "m_Dictionary": {
+        "m_DictionaryValues": [
+            {
+                "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "IncludeAssemblies",
+                "value": "{\"m_Value\":\"com.bananva.loading-service,com.bananva.ui.dispatchiring,com.bananva.ui.dispatchiring.test.playmode,com.bananva.utilities,NuGetForUnity,PPv2URPConverters,PsdPlugin,R3.Unity,R3.Unity.Editor,R3.Unity.TextMeshPro,R3.Unity.XRInteractionToolkit,ScriptablePacker,SpaceStellar,SpaceStellar.Editor,TNRD.SerializableInterface,TNRD.SerializableInterface.Editor,ToolbarExtender.Editor,UniTask,UniTask.Addressables,UniTask.DOTween,UniTask.Editor,UniTask.Linq,UniTask.TextMeshPro,Unity.2D.Animation.Editor,Unity.2D.Animation.Runtime,Unity.2D.Aseprite.Common,Unity.2D.Aseprite.Editor,Unity.2D.Common.Editor,Unity.2D.Common.Path.Editor,Unity.2D.Common.Runtime,Unity.2D.IK.Editor,Unity.2D.IK.Runtime,Unity.2D.PixelPerfect,Unity.2D.PixelPerfect.Editor,Unity.2D.Psdimporter.Editor,Unity.2D.Sprite.Editor,Unity.2D.SpriteShape.Editor,Unity.2D.SpriteShape.Runtime,Unity.2D.Tilemap.Editor,Unity.2D.Tilemap.Extras,Unity.2D.Tilemap.Extras.Editor,Unity.Addressables,Unity.Addressables.Editor,Unity.Addressables.Editor.Tests.DocExampleCode,Unity.Burst,Unity.Burst.CodeGen,Unity.Burst.Editor,Unity.Collections,Unity.Collections.CodeGen,Unity.Collections.Editor,Unity.InputSystem,Unity.InputSystem.ForUI,Unity.InputSystem.TestFramework,Unity.InternalAPIEditorBridge.001,Unity.InternalAPIEngineBridge.001,Unity.Mathematics,Unity.Mathematics.Editor,Unity.PerformanceTesting,Unity.PerformanceTesting.Editor,Unity.Profiling.Core,Unity.Rendering.LightTransport.Editor,Unity.Rendering.LightTransport.Runtime,Unity.RenderPipeline.Universal.ShaderLibrary,Unity.RenderPipelines.Core.Editor,Unity.RenderPipelines.Core.Editor.Shared,Unity.RenderPipelines.Core.Runtime,Unity.RenderPipelines.Core.Runtime.Shared,Unity.RenderPipelines.Core.ShaderLibrary,Unity.RenderPipelines.GPUDriven.Runtime,Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary,Unity.RenderPipelines.Universal.2D.Runtime,Unity.RenderPipelines.Universal.Config.Runtime,Unity.RenderPipelines.Universal.Editor,Unity.RenderPipelines.Universal.Runtime,Unity.RenderPipelines.Universal.Shaders,Unity.ResourceManager,Unity.Rider.Editor,Unity.ScriptableBuildPipeline,Unity.ScriptableBuildPipeline.Editor,Unity.Searcher.Editor,Unity.Settings.Editor,Unity.ShaderGraph.Editor,Unity.ShaderGraph.Utilities,Unity.TestTools.CodeCoverage.Editor,Unity.TestTools.CodeCoverage.Editor.OpenCover.Model,Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection,Unity.TextMeshPro,Unity.TextMeshPro.Editor,Unity.VisualStudio.Editor,UnityEditor.TestRunner,UnityEditor.UI,UnityEngine.TestRunner,UnityEngine.UI,Zenject,Zenject-Editor,Zenject-PoolMonitor-Editor,Zenject-ReflectionBaking-Editor\"}"
+            },
+            {
+                "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "Path",
+                "value": "{\"m_Value\":\"{ProjectPath}\"}"
+            },
+            {
+                "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "HistoryPath",
+                "value": "{\"m_Value\":\"{ProjectPath}\"}"
+            },
+            {
+                "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "PathsToInclude",
+                "value": "{\"m_Value\":\"\"}"
+            },
+            {
+                "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "PathsToExclude",
+                "value": "{\"m_Value\":\"\"}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "EnableCodeCoverage",
+                "value": "{\"m_Value\":true}"
+            }
+        ]
+    }
+}
