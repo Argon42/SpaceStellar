@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Bananva.UI.Dispatchiring.Ugui
 {
-    public class UguiView : MonoBehaviour, IView
+    public abstract class UguiView : MonoBehaviour, IView
     {
         public bool IsActive => this != null && gameObject.activeSelf;
         public bool IsShow => this != null && gameObject.activeInHierarchy;

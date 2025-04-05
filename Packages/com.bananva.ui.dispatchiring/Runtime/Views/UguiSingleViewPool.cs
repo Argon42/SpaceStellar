@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Bananva.UI.Dispatchiring.Ugui;
+using Bananva.Utilities.Extensions;
 using UnityEngine;
 
 namespace Bananva.UI.Dispatchiring.Views
@@ -21,12 +21,8 @@ namespace Bananva.UI.Dispatchiring.Views
 
         private void LateUpdate()
         {
-            while (_markForDisable.Count > 0)
-            {
-                var view = _markForDisable.First();
-                _markForDisable.Remove(view);
-                view.Deactivate();
-            }
+            _markForDisable.ForEach(view => view.Deactivate());
+            _markForDisable.Clear();
         }
 
         public override TView Spawn<TView>()

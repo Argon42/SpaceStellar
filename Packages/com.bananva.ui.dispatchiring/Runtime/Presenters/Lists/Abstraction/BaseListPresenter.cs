@@ -164,17 +164,11 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction
             _pool.CloseAndDespawnPresenter(presenter);
         }
 
-        private void ShiftElements(int from, int count)
+        private void ShiftElements(int from, int offset)
         {
-            foreach (var key in _presenters.Keys)
-            {
-                if (key >= from)
-                {
-                    _keysToShift.Add(key);
-                }
-            }
+            _keysToShift.AddRange(_presenters.Keys.Where(key => key >= from));
 
-            var orderedEnumerable = count > 0
+            var orderedEnumerable = offset > 0
                 ? _keysToShift.OrderByDescending(i => i)
                 : _keysToShift.OrderBy(i => i);
 
@@ -182,7 +176,7 @@ namespace Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction
             {
                 var value = _presenters[key];
                 _presenters.Remove(key);
-                _presenters[key + count] = value;
+                _presenters[key + offset] = value;
             }
 
             _keysToShift.Clear();
