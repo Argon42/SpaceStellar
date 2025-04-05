@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Specialized;
-using Bananva.UI.Dispatchiring.Api.Presenters;
-using Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction;
+﻿using System.Collections.Specialized;
+using Bananva.UI.Dispatching.Api.Presenters;
+using Bananva.UI.Dispatching.Presenters.Lists.Abstraction;
 using ObservableCollections;
 
-namespace Bananva.UI.Dispatchiring.Presenters.Lists
+namespace Bananva.UI.Dispatching.Presenters.Lists
 {
     public interface IReactiveListPresenter<TModelItem> :
         IListPresenter<IReadOnlyObservableList<TModelItem>> where TModelItem : class { }

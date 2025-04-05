@@ -1,4 +1,4 @@
-﻿namespace Bananva.UI.Dispatchiring.WaitingWindow.Api
+﻿namespace Bananva.UI.Dispatching.WaitingWindow.Api
 {
     public interface IWaitingWindowDispatcher
     {

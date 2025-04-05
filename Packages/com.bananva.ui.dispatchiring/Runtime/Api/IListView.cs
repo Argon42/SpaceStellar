@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bananva.UI.Dispatchiring.Api
+namespace Bananva.UI.Dispatching.Api
 {
     public interface IListView : IView, IViewFactory
     {

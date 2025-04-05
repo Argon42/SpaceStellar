@@ -1,6 +1,6 @@
 {
-    "name": "com.bananva.ui.dispatchiring",
-    "rootNamespace": "Bananva.UI.Dispatchiring",
+    "name": "com.bananva.ui.dispatching",
+    "rootNamespace": "Bananva.UI.Dispatching",
     "references": [
         "UniTask",
         "com.bananva.utilities",

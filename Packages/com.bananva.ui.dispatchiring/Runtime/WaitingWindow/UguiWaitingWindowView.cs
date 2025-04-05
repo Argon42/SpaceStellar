@@ -1,6 +1,6 @@
-using Bananva.UI.Dispatchiring.Ugui;
+using Bananva.UI.Dispatching.Views;
 
-namespace Bananva.UI.Dispatchiring.WaitingWindow
+namespace Bananva.UI.Dispatching.WaitingWindow
 {
     public class UguiWaitingWindowView : UguiScreenView, IWaitingWindowView { }
 }

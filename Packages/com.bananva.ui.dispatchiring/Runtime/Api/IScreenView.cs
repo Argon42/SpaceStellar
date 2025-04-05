@@ -1,4 +1,4 @@
-﻿namespace Bananva.UI.Dispatchiring.Api
+﻿namespace Bananva.UI.Dispatching.Api
 {
     public interface IScreenView : IView { }
 }

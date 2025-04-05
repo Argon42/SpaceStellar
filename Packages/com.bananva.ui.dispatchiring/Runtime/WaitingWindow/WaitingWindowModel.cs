@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Bananva.UI.Dispatchiring.WaitingWindow.Abstraction;
+using Bananva.UI.Dispatching.WaitingWindow.Abstraction;
 
-namespace Bananva.UI.Dispatchiring.WaitingWindow
+namespace Bananva.UI.Dispatching.WaitingWindow
 {
     internal class WaitingWindowModel : IWaitingWindowModel
     {

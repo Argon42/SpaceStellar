@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Bananva.UI.Dispatchiring.Api.Presenters;
-using Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction;
+using Bananva.UI.Dispatching.Api.Presenters;
+using Bananva.UI.Dispatching.Presenters.Lists.Abstraction;
 
-namespace Bananva.UI.Dispatchiring.Presenters.Lists
+namespace Bananva.UI.Dispatching.Presenters.Lists
 {
     public interface IReadOnlyListPresenter<TModelItem> :
         IListPresenter<IReadOnlyList<TModelItem>> where TModelItem : class { }

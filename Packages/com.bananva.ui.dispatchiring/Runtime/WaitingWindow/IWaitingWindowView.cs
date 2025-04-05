@@ -1,6 +1,6 @@
-using Bananva.UI.Dispatchiring.Api;
+using Bananva.UI.Dispatching.Api;
 
-namespace Bananva.UI.Dispatchiring.WaitingWindow
+namespace Bananva.UI.Dispatching.WaitingWindow
 {
     public interface IWaitingWindowView : IView { }
 }

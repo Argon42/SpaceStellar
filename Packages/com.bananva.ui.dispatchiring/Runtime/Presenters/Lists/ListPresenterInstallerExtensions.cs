@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ObservableCollections;
 using Zenject;
 
-namespace Bananva.UI.Dispatchiring.Presenters.Lists
+namespace Bananva.UI.Dispatching.Presenters.Lists
 {
     public static class ListPresenterInstallerExtensions
     {

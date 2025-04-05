@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Bananva.UI.Dispatchiring.Api.Presenters;
+using Bananva.UI.Dispatching.Api.Presenters;
 using Zenject;
 
-namespace Bananva.UI.Dispatchiring.Presenters.Lists.Common
+namespace Bananva.UI.Dispatching.Presenters.Lists.Common
 {
     public class PresenterViewMatchers
     {

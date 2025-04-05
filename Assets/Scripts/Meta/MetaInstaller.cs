@@ -1,4 +1,4 @@
-using Bananva.UI.Dispatchiring.DispatcherImpl;
+using Bananva.UI.Dispatching.DispatcherImpl;
 using SpaceStellar.Meta.Ui.MainScreen;
 using Zenject;
 

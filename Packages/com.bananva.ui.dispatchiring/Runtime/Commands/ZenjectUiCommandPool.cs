@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Zenject;
 
-namespace Bananva.UI.Dispatchiring.Commands
+namespace Bananva.UI.Dispatching.Commands
 {
     public class ZenjectUiCommandPool : IUiCommandPool
     {

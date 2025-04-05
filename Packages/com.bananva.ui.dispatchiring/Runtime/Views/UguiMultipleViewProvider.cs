@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Bananva.UI.Dispatchiring.Api;
-using Bananva.UI.Dispatchiring.Ugui;
+using Bananva.UI.Dispatching.Api;
 using Bananva.Utilities.Extensions;
 using UnityEngine;
 
-namespace Bananva.UI.Dispatchiring.Views
+namespace Bananva.UI.Dispatching.Views
 {
     public class UguiMultipleViewProvider : UguiListViewProvider
     {

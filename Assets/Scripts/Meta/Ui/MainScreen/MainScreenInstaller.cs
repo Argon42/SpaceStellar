@@ -1,4 +1,4 @@
-﻿using Bananva.UI.Dispatchiring.Presenters.Lists;
+﻿using Bananva.UI.Dispatching.Presenters.Lists;
 using Bananva.Utilities.Extensions;
 using SpaceStellar.Meta.Ui.MainScreen.Models;
 using SpaceStellar.Meta.Ui.MainScreen.Presenters;

@@ -1,6 +1,6 @@
-using Bananva.UI.Dispatchiring.WaitingWindow.Api;
+using Bananva.UI.Dispatching.WaitingWindow.Api;
 
-namespace Bananva.UI.Dispatchiring.WaitingWindow.Abstraction
+namespace Bananva.UI.Dispatching.WaitingWindow.Abstraction
 {
     internal interface IWaitingWindowBuilderFactory
     {

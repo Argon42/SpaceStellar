@@ -1,6 +1,6 @@
 using System;
 
-namespace Bananva.UI.Dispatchiring.WaitingWindow.Abstraction
+namespace Bananva.UI.Dispatching.WaitingWindow.Abstraction
 {
     internal interface IWaitingWindowModel
     {

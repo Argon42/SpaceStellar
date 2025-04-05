@@ -1,6 +1,6 @@
-﻿using Bananva.UI.Dispatchiring.Api.Presenters;
+﻿using Bananva.UI.Dispatching.Api.Presenters;
 
-namespace Bananva.UI.Dispatchiring.Api
+namespace Bananva.UI.Dispatching.Api
 {
     public interface IWindowDispatcher
     {

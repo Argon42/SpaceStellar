@@ -1,6 +1,5 @@
-using Bananva.UI.Dispatchiring.Api;
-using Bananva.UI.Dispatchiring.Ugui;
-using Bananva.UI.Dispatchiring.Views;
+using Bananva.UI.Dispatching.Api;
+using Bananva.UI.Dispatching.Views;
 using UnityEngine;
 
 namespace SpaceStellar.Meta.Ui.MainScreen.Views

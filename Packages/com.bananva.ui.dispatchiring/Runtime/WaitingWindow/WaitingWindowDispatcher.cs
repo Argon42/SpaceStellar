@@ -1,8 +1,8 @@
-using Bananva.UI.Dispatchiring.WaitingWindow.Abstraction;
-using Bananva.UI.Dispatchiring.WaitingWindow.Api;
+using Bananva.UI.Dispatching.WaitingWindow.Abstraction;
+using Bananva.UI.Dispatching.WaitingWindow.Api;
 using Bananva.Utilities.Logger;
 
-namespace Bananva.UI.Dispatchiring.WaitingWindow
+namespace Bananva.UI.Dispatching.WaitingWindow
 {
     internal class WaitingWindowDispatcher : IWaitingWindowDispatcherInternal
     {

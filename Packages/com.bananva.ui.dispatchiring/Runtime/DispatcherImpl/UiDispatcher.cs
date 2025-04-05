@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Bananva.UI.Dispatchiring.Api;
-using Bananva.UI.Dispatchiring.Api.Presenters;
-using Bananva.UI.Dispatchiring.WaitingWindow.Api;
+using Bananva.UI.Dispatching.Api;
+using Bananva.UI.Dispatching.Api.Presenters;
+using Bananva.UI.Dispatching.WaitingWindow.Api;
 using Bananva.Utilities.Logger;
 using Cysharp.Threading.Tasks;
 
-namespace Bananva.UI.Dispatchiring.DispatcherImpl
+namespace Bananva.UI.Dispatching.DispatcherImpl
 {
     public class UiDispatcher : IUiDispatcher
     {

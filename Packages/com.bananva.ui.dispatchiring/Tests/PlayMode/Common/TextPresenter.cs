@@ -1,6 +1,6 @@
-using Bananva.UI.Dispatchiring.Presenters;
+using Bananva.UI.Dispatching.Presenters;
 
-namespace Tests.PlayMode.Common
+namespace Bananva.UI.Dispatching.Tests.PlayMode.Common
 {
     internal class TextPresenter : Presenter<TextData, TextView>
     {

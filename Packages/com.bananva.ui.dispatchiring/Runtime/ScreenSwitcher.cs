@@ -1,9 +1,9 @@
 using System;
-using Bananva.UI.Dispatchiring.Api;
-using Bananva.UI.Dispatchiring.Api.Presenters;
+using Bananva.UI.Dispatching.Api;
+using Bananva.UI.Dispatching.Api.Presenters;
 using Cysharp.Threading.Tasks;
 
-namespace Bananva.UI.Dispatchiring
+namespace Bananva.UI.Dispatching
 {
     public class ScreenSwitcher : IScreenSwitcher
     {

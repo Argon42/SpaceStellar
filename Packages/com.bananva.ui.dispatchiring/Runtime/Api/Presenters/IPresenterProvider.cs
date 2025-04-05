@@ -1,4 +1,4 @@
-﻿namespace Bananva.UI.Dispatchiring.Api.Presenters
+﻿namespace Bananva.UI.Dispatching.Api.Presenters
 {
     public interface IPresenterProvider
     {

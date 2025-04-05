@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-namespace Bananva.UI.Dispatchiring.Api
+namespace Bananva.UI.Dispatching.Api
 {
     public interface IViewProvider
     {

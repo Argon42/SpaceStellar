@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading;
-using Bananva.UI.Dispatchiring.Api;
-using Bananva.UI.Dispatchiring.Api.Presenters;
+using Bananva.UI.Dispatching.Api;
+using Bananva.UI.Dispatching.Api.Presenters;
 using Cysharp.Threading.Tasks;
 
-namespace Bananva.UI.Dispatchiring.Presenters
+namespace Bananva.UI.Dispatching.Presenters
 {
     // TODO: разобраться с дублированием логики с SreenPresenter
     public abstract class WindowPresenter<TModel, TView> : PresentationLayerItem,

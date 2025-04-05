@@ -1,7 +1,7 @@
 using System;
-using Bananva.UI.Dispatchiring.WaitingWindow.Abstraction;
+using Bananva.UI.Dispatching.WaitingWindow.Abstraction;
 
-namespace Bananva.UI.Dispatchiring.WaitingWindow
+namespace Bananva.UI.Dispatching.WaitingWindow
 {
     internal class WaitingWindowRequest : IWaitingRequest
     {

@@ -1,9 +1,9 @@
 ﻿using System.Threading;
-using Bananva.UI.Dispatchiring.Api;
-using Bananva.UI.Dispatchiring.WaitingWindow.Abstraction;
+using Bananva.UI.Dispatching.Api;
+using Bananva.UI.Dispatching.WaitingWindow.Abstraction;
 using Zenject;
 
-namespace Bananva.UI.Dispatchiring.WaitingWindow
+namespace Bananva.UI.Dispatching.WaitingWindow
 {
     public class WaitingWindowInstaller : Installer<WaitingWindowInstaller>
     {

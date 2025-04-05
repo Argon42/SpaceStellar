@@ -1,9 +1,9 @@
-﻿using Bananva.UI.Dispatchiring.Api;
-using Bananva.UI.Dispatchiring.Api.Presenters;
-using Bananva.UI.Dispatchiring.Presenters.Wrappers;
+﻿using Bananva.UI.Dispatching.Api;
+using Bananva.UI.Dispatching.Api.Presenters;
+using Bananva.UI.Dispatching.Presenters.Wrappers;
 using Zenject;
 
-namespace Bananva.UI.Dispatchiring.Presenters.Lists.Common
+namespace Bananva.UI.Dispatching.Presenters.Lists.Common
 {
     public abstract class PresenterViewMatcher
     {

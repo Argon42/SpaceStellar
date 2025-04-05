@@ -1,8 +1,8 @@
 using System.Threading;
-using Bananva.UI.Dispatchiring.Api;
-using Bananva.UI.Dispatchiring.Api.Presenters;
-using Bananva.UI.Dispatchiring.Presenters;
-using Bananva.UI.Dispatchiring.Presenters.Lists;
+using Bananva.UI.Dispatching.Api;
+using Bananva.UI.Dispatching.Api.Presenters;
+using Bananva.UI.Dispatching.Presenters;
+using Bananva.UI.Dispatching.Presenters.Lists;
 using Cysharp.Threading.Tasks;
 using SpaceStellar.Meta.Ui.MainScreen.Models;
 using SpaceStellar.Meta.Ui.MainScreen.Views;

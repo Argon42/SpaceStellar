@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
-using Bananva.UI.Dispatchiring.Api;
+using Bananva.UI.Dispatching.Api;
+using Bananva.UI.Dispatching.Views;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Bananva.UI.Dispatchiring.Ugui
+namespace SpaceStellar.Common.Ui.Ugui
 {
     public class UguiScreenContainer : IViewProvider
     {

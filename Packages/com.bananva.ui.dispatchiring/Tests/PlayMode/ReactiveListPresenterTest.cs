@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Linq;
+using Bananva.UI.Dispatching.Tests.PlayMode.Common;
 using Bananva.Utilities.Tests;
-using Cysharp.Threading.Tasks;
 using NUnit.Framework;
 using ObservableCollections;
-using Tests.PlayMode.Common;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests.PlayMode
+namespace Bananva.UI.Dispatching.Tests.PlayMode
 {
     [TestFixture]
     public class ReactiveListPresenterTest : BaseIntegrationTest

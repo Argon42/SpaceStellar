@@ -1,4 +1,4 @@
-using Bananva.UI.Dispatchiring.Api;
+using Bananva.UI.Dispatching.Api;
 
 namespace SpaceStellar.Meta.Ui.MainScreen.Views
 {

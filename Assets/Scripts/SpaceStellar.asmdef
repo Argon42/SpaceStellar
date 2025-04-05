@@ -9,7 +9,7 @@
         "Unity.TextMeshPro",
         "com.bananva.loading-service",
         "com.bananva.utilities",
-        "com.bananva.ui.dispatchiring"
+        "com.bananva.ui.dispatching"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

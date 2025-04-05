@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Bananva.UI.Dispatchiring.Ugui;
 using Bananva.Utilities.Extensions;
 using UnityEngine;
 
-namespace Bananva.UI.Dispatchiring.Views
+namespace Bananva.UI.Dispatching.Views
 {
     public class UguiSingleViewPool : UguiListViewProvider
     {

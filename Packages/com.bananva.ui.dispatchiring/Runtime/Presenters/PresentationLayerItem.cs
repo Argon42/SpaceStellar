@@ -1,7 +1,7 @@
 ﻿using System;
-using Bananva.UI.Dispatchiring.Api.Presenters;
+using Bananva.UI.Dispatching.Api.Presenters;
 
-namespace Bananva.UI.Dispatchiring.Presenters
+namespace Bananva.UI.Dispatching.Presenters
 {
     public abstract class PresentationLayerItem : IPresentationLayerItem
     {

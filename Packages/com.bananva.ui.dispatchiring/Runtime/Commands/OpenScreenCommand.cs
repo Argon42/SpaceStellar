@@ -1,9 +1,9 @@
 ﻿using System.Threading;
-using Bananva.UI.Dispatchiring.Api;
-using Bananva.UI.Dispatchiring.Api.Presenters;
+using Bananva.UI.Dispatching.Api;
+using Bananva.UI.Dispatching.Api.Presenters;
 using Cysharp.Threading.Tasks;
 
-namespace Bananva.UI.Dispatchiring.Commands
+namespace Bananva.UI.Dispatching.Commands
 {
     public class OpenScreenCommand<TScreenPresenter, TModel> : IUiCommand
         where TScreenPresenter : IPresentationLayerItem

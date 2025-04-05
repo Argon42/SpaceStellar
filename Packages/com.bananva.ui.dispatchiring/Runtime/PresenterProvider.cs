@@ -1,7 +1,7 @@
-﻿using Bananva.UI.Dispatchiring.Api.Presenters;
+﻿using Bananva.UI.Dispatching.Api.Presenters;
 using Zenject;
 
-namespace Bananva.UI.Dispatchiring
+namespace Bananva.UI.Dispatching
 {
     public class PresenterProvider : IPresenterProvider
     {

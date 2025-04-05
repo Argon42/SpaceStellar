@@ -1,4 +1,4 @@
-namespace Bananva.UI.Dispatchiring.Commands
+namespace Bananva.UI.Dispatching.Commands
 {
     public interface IUiCommandDispatcher
     {

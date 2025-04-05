@@ -1,8 +1,7 @@
-﻿using Bananva.UI.Dispatchiring.Api;
-using Bananva.UI.Dispatchiring.Ugui;
+﻿using Bananva.UI.Dispatching.Api;
 using UnityEngine;
 
-namespace Bananva.UI.Dispatchiring.Views
+namespace Bananva.UI.Dispatching.Views
 {
     public abstract class UguiListViewProvider : MonoBehaviour
     {

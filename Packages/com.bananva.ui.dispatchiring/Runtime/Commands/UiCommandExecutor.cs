@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using Bananva.UI.Dispatchiring.Api;
+using Bananva.UI.Dispatching.Api;
 using Cysharp.Threading.Tasks;
 
-namespace Bananva.UI.Dispatchiring.Commands
+namespace Bananva.UI.Dispatching.Commands
 {
     public class UiCommandExecutor : IDisposable
     {

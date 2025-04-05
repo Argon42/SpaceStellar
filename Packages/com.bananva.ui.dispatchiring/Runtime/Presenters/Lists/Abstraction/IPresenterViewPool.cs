@@ -1,7 +1,7 @@
-using Bananva.UI.Dispatchiring.Api;
-using Bananva.UI.Dispatchiring.Presenters.Wrappers;
+using Bananva.UI.Dispatching.Api;
+using Bananva.UI.Dispatching.Presenters.Wrappers;
 
-namespace Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction
+namespace Bananva.UI.Dispatching.Presenters.Lists.Abstraction
 {
     public interface IPresenterViewPool
     {

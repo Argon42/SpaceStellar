@@ -1,8 +1,8 @@
 {
     "name": "com.bananva.ui.dispatchiring.test.playmode",
-    "rootNamespace": "",
+    "rootNamespace": "Bananva.UI.Dispatching",
     "references": [
-        "com.bananva.ui.dispatchiring",
+        "com.bananva.ui.dispatching",
         "UnityEngine.TestRunner",
         "UniTask",
         "Zenject",

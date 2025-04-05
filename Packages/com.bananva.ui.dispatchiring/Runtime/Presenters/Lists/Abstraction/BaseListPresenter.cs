@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Bananva.UI.Dispatchiring.Api;
-using Bananva.UI.Dispatchiring.Api.Presenters;
-using Bananva.UI.Dispatchiring.Presenters.Wrappers;
+using Bananva.UI.Dispatching.Api;
+using Bananva.UI.Dispatching.Api.Presenters;
+using Bananva.UI.Dispatching.Presenters.Wrappers;
 using UnityEngine;
 
-namespace Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction
+namespace Bananva.UI.Dispatching.Presenters.Lists.Abstraction
 {
     public abstract class BaseListPresenter<TCollection, TModel> :
         Presenter<TCollection, IListView>,

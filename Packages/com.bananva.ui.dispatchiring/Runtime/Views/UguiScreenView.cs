@@ -1,6 +1,6 @@
-﻿using Bananva.UI.Dispatchiring.Api;
+﻿using Bananva.UI.Dispatching.Api;
 
-namespace Bananva.UI.Dispatchiring.Ugui
+namespace Bananva.UI.Dispatching.Views
 {
     public abstract class UguiScreenView : UguiView, IScreenView { }
 }

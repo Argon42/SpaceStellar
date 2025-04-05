@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.bananva.ui.dispatchiring": {
+    "com.bananva.ui.dispatching": {
       "version": "file:com.bananva.ui.dispatchiring",
       "depth": 0,
       "source": "embedded",

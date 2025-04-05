@@ -1,4 +1,4 @@
-namespace Tests.PlayMode.Common
+namespace Bananva.UI.Dispatching.Tests.PlayMode.Common
 {
     internal class TextData : Data
     {

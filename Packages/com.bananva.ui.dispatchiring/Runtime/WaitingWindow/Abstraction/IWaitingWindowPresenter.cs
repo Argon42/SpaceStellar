@@ -1,6 +1,6 @@
-using Bananva.UI.Dispatchiring.Api.Presenters;
+using Bananva.UI.Dispatching.Api.Presenters;
 
-namespace Bananva.UI.Dispatchiring.WaitingWindow.Abstraction
+namespace Bananva.UI.Dispatching.WaitingWindow.Abstraction
 {
     internal interface IWaitingWindowPresenter : IPresentationLayerItem { }
 }

@@ -1,8 +1,8 @@
-﻿using Bananva.UI.Dispatchiring.Commands;
-using Bananva.UI.Dispatchiring.WaitingWindow;
+﻿using Bananva.UI.Dispatching.Commands;
+using Bananva.UI.Dispatching.WaitingWindow;
 using Zenject;
 
-namespace Bananva.UI.Dispatchiring.DispatcherImpl
+namespace Bananva.UI.Dispatching.DispatcherImpl
 {
     public class UiInstaller : Installer<UiInstaller>
     {

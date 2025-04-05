@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Bananva.UI.Dispatchiring.Ugui
+namespace SpaceStellar.Common.Ui.Ugui
 {
     [CreateAssetMenu(fileName = "UguiScreenInstaller", menuName = "Stellar/Installers/UguiScreenInstaller", order = 1)]
     public class UguiScreenInstaller : ScriptableObjectInstaller

@@ -1,9 +1,9 @@
-﻿using Bananva.UI.Dispatchiring.Views;
+﻿using Bananva.UI.Dispatching.Views;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
 
-namespace Tests.PlayMode
+namespace Bananva.UI.Dispatching.Tests.PlayMode
 {
     internal class ScrollListInstaller : MonoInstaller<ScrollListInstaller>
     {

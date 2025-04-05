@@ -1,5 +1,5 @@
 ﻿using System;
-using Bananva.UI.Dispatchiring.Ugui;
+using Bananva.UI.Dispatching.Views;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

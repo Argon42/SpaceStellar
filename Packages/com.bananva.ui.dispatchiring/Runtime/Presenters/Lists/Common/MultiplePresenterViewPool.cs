@@ -1,9 +1,9 @@
 ﻿using System;
-using Bananva.UI.Dispatchiring.Api;
-using Bananva.UI.Dispatchiring.Presenters.Lists.Abstraction;
-using Bananva.UI.Dispatchiring.Presenters.Wrappers;
+using Bananva.UI.Dispatching.Api;
+using Bananva.UI.Dispatching.Presenters.Lists.Abstraction;
+using Bananva.UI.Dispatching.Presenters.Wrappers;
 
-namespace Bananva.UI.Dispatchiring.Presenters.Lists.Common
+namespace Bananva.UI.Dispatching.Presenters.Lists.Common
 {
     public class MultiplePresenterViewPool : IPresenterViewPool
     {

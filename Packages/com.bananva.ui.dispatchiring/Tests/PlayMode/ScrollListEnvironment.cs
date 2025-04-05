@@ -1,12 +1,11 @@
 using System.Linq;
-using Bananva.UI.Dispatchiring.Presenters.Lists;
-using Bananva.UI.Dispatchiring.Views;
+using Bananva.UI.Dispatching.Presenters.Lists;
+using Bananva.UI.Dispatching.Tests.PlayMode.Common;
+using Bananva.UI.Dispatching.Views;
 using Bananva.Utilities.Tests;
-using Cysharp.Threading.Tasks;
-using Tests.PlayMode.Common;
 using UnityEngine;
 
-namespace Tests.PlayMode
+namespace Bananva.UI.Dispatching.Tests.PlayMode
 {
     internal class ScrollListEnvironment
     {
